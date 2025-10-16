@@ -1,283 +1,997 @@
 {
   "Dashboard": {
     "Machine Status": [
-      {"name": "ALLARME_ATTIVO", "address": 40001, "type": "BOOL", "icon": "⚠️", "label": "Allarme Attivo"},
-      {"name": "Pressostato_aria_generale", "address": 40010, "type": "BOOL", "icon": "💨", "label": "Pressione Aria"},
-      {"name": "Stato_centralina_sicurezza", "address": 40011, "type": "BOOL", "icon": "🛡️", "label": "Sicurezza"},
-      {"name": "BIT_OK_HOME", "address": 40020, "type": "BOOL", "icon": "🏠", "label": "Homing OK"}
+      {
+        "name": "ALLARME_ATTIVO",
+        "address": 0,
+        "type": "BOOL",
+        "icon": "\u26a0\ufe0f",
+        "label": "Allarme Attivo"
+      },
+      {
+        "name": "Pressostato_aria_generale",
+        "address": 9,
+        "type": "BOOL",
+        "icon": "\ud83d\udca8",
+        "label": "Pressione Aria"
+      },
+      {
+        "name": "Stato_centralina_sicurezza",
+        "address": 10,
+        "type": "BOOL",
+        "icon": "\ud83d\udee1\ufe0f",
+        "label": "Sicurezza"
+      },
+      {
+        "name": "BIT_OK_HOME",
+        "address": 19,
+        "type": "BOOL",
+        "icon": "\ud83c\udfe0",
+        "label": "Homing OK"
+      }
     ],
     "Production Overview": [
-      {"name": "CUBI_LAVORATI", "address": 40100, "type": "INT", "icon": "📦", "label": "Cubi Totali"},
-      {"name": "ORE_LAVORO_REALI", "address": 40101, "type": "INT", "icon": "⏱️", "label": "Ore Lavoro"},
-      {"name": "ORE_MACCHINA_ACCESA", "address": 40102, "type": "INT", "icon": "🔌", "label": "Ore Macchina"}
+      {
+        "name": "CUBI_LAVORATI",
+        "address": 99,
+        "type": "INT",
+        "icon": "\ud83d\udce6",
+        "label": "Cubi Totali"
+      },
+      {
+        "name": "ORE_LAVORO_REALI",
+        "address": 100,
+        "type": "INT",
+        "icon": "\u23f1\ufe0f",
+        "label": "Ore Lavoro"
+      },
+      {
+        "name": "ORE_MACCHINA_ACCESA",
+        "address": 101,
+        "type": "INT",
+        "icon": "\ud83d\udd0c",
+        "label": "Ore Macchina"
+      }
     ]
   },
   "Errors & Alarms": {
     "Active Alarms": [
-      {"name": "ALLARME_ATTIVO", "address": 40001, "type": "BOOL"},
-      {"name": "ALLARME_ATTIVO_1", "address": 40002, "type": "BOOL"},
-      {"name": "ALLARME_ATTIVO_2", "address": 40003, "type": "BOOL"},
-      {"name": "ALLARME_ATTIVO_3", "address": 40004, "type": "BOOL"},
-      {"name": "ALLARME_SONORO", "address": 40005, "type": "BOOL"},
-      {"name": "FINE_ALLARME_SONORO", "address": 40006, "type": "BOOL"},
-      {"name": "PULSANTE_RESET_ALLARMI", "address": 40007, "type": "BOOL"}
+      {
+        "name": "ALLARME_ATTIVO",
+        "address": 0,
+        "type": "BOOL"
+      },
+      {
+        "name": "ALLARME_ATTIVO_1",
+        "address": 1,
+        "type": "BOOL"
+      },
+      {
+        "name": "ALLARME_ATTIVO_2",
+        "address": 2,
+        "type": "BOOL"
+      },
+      {
+        "name": "ALLARME_ATTIVO_3",
+        "address": 3,
+        "type": "BOOL"
+      },
+      {
+        "name": "ALLARME_SONORO",
+        "address": 4,
+        "type": "BOOL"
+      },
+      {
+        "name": "FINE_ALLARME_SONORO",
+        "address": 5,
+        "type": "BOOL"
+      },
+      {
+        "name": "PULSANTE_RESET_ALLARMI",
+        "address": 6,
+        "type": "BOOL"
+      }
     ],
     "Error Codes 1-20": [
-      {"name": "NUMERO_ERRORE[1]", "address": 40200, "type": "INT"},
-      {"name": "NUMERO_ERRORE[2]", "address": 40201, "type": "INT"},
-      {"name": "NUMERO_ERRORE[3]", "address": 40202, "type": "INT"},
-      {"name": "NUMERO_ERRORE[4]", "address": 40203, "type": "INT"},
-      {"name": "NUMERO_ERRORE[5]", "address": 40204, "type": "INT"},
-      {"name": "NUMERO_ERRORE[6]", "address": 40205, "type": "INT"},
-      {"name": "NUMERO_ERRORE[7]", "address": 40206, "type": "INT"},
-      {"name": "NUMERO_ERRORE[8]", "address": 40207, "type": "INT"},
-      {"name": "NUMERO_ERRORE[9]", "address": 40208, "type": "INT"},
-      {"name": "NUMERO_ERRORE[10]", "address": 40209, "type": "INT"},
-      {"name": "NUMERO_ERRORE[11]", "address": 40210, "type": "INT"},
-      {"name": "NUMERO_ERRORE[12]", "address": 40211, "type": "INT"},
-      {"name": "NUMERO_ERRORE[13]", "address": 40212, "type": "INT"},
-      {"name": "NUMERO_ERRORE[14]", "address": 40213, "type": "INT"},
-      {"name": "NUMERO_ERRORE[15]", "address": 40214, "type": "INT"},
-      {"name": "NUMERO_ERRORE[16]", "address": 40215, "type": "INT"},
-      {"name": "NUMERO_ERRORE[17]", "address": 40216, "type": "INT"},
-      {"name": "NUMERO_ERRORE[18]", "address": 40217, "type": "INT"},
-      {"name": "NUMERO_ERRORE[19]", "address": 40218, "type": "INT"},
-      {"name": "NUMERO_ERRORE[20]", "address": 40219, "type": "INT"}
+      {
+        "name": "NUMERO_ERRORE[1]",
+        "address": 199,
+        "type": "INT"
+      },
+      {
+        "name": "NUMERO_ERRORE[2]",
+        "address": 200,
+        "type": "INT"
+      },
+      {
+        "name": "NUMERO_ERRORE[3]",
+        "address": 201,
+        "type": "INT"
+      },
+      {
+        "name": "NUMERO_ERRORE[4]",
+        "address": 202,
+        "type": "INT"
+      },
+      {
+        "name": "NUMERO_ERRORE[5]",
+        "address": 203,
+        "type": "INT"
+      },
+      {
+        "name": "NUMERO_ERRORE[6]",
+        "address": 204,
+        "type": "INT"
+      },
+      {
+        "name": "NUMERO_ERRORE[7]",
+        "address": 205,
+        "type": "INT"
+      },
+      {
+        "name": "NUMERO_ERRORE[8]",
+        "address": 206,
+        "type": "INT"
+      },
+      {
+        "name": "NUMERO_ERRORE[9]",
+        "address": 207,
+        "type": "INT"
+      },
+      {
+        "name": "NUMERO_ERRORE[10]",
+        "address": 208,
+        "type": "INT"
+      },
+      {
+        "name": "NUMERO_ERRORE[11]",
+        "address": 209,
+        "type": "INT"
+      },
+      {
+        "name": "NUMERO_ERRORE[12]",
+        "address": 210,
+        "type": "INT"
+      },
+      {
+        "name": "NUMERO_ERRORE[13]",
+        "address": 211,
+        "type": "INT"
+      },
+      {
+        "name": "NUMERO_ERRORE[14]",
+        "address": 212,
+        "type": "INT"
+      },
+      {
+        "name": "NUMERO_ERRORE[15]",
+        "address": 213,
+        "type": "INT"
+      },
+      {
+        "name": "NUMERO_ERRORE[16]",
+        "address": 214,
+        "type": "INT"
+      },
+      {
+        "name": "NUMERO_ERRORE[17]",
+        "address": 215,
+        "type": "INT"
+      },
+      {
+        "name": "NUMERO_ERRORE[18]",
+        "address": 216,
+        "type": "INT"
+      },
+      {
+        "name": "NUMERO_ERRORE[19]",
+        "address": 217,
+        "type": "INT"
+      },
+      {
+        "name": "NUMERO_ERRORE[20]",
+        "address": 218,
+        "type": "INT"
+      }
     ],
     "Error Codes 21-40": [
-      {"name": "NUMERO_ERRORE[21]", "address": 40220, "type": "INT"},
-      {"name": "NUMERO_ERRORE[22]", "address": 40221, "type": "INT"},
-      {"name": "NUMERO_ERRORE[23]", "address": 40222, "type": "INT"},
-      {"name": "NUMERO_ERRORE[24]", "address": 40223, "type": "INT"},
-      {"name": "NUMERO_ERRORE[25]", "address": 40224, "type": "INT"},
-      {"name": "NUMERO_ERRORE[26]", "address": 40225, "type": "INT"},
-      {"name": "NUMERO_ERRORE[27]", "address": 40226, "type": "INT"},
-      {"name": "NUMERO_ERRORE[28]", "address": 40227, "type": "INT"},
-      {"name": "NUMERO_ERRORE[29]", "address": 40228, "type": "INT"},
-      {"name": "NUMERO_ERRORE[30]", "address": 40229, "type": "INT"},
-      {"name": "NUMERO_ERRORE[31]", "address": 40230, "type": "INT"},
-      {"name": "NUMERO_ERRORE[32]", "address": 40231, "type": "INT"},
-      {"name": "NUMERO_ERRORE[33]", "address": 40232, "type": "INT"},
-      {"name": "NUMERO_ERRORE[34]", "address": 40233, "type": "INT"},
-      {"name": "NUMERO_ERRORE[35]", "address": 40234, "type": "INT"},
-      {"name": "NUMERO_ERRORE[36]", "address": 40235, "type": "INT"},
-      {"name": "NUMERO_ERRORE[37]", "address": 40236, "type": "INT"},
-      {"name": "NUMERO_ERRORE[38]", "address": 40237, "type": "INT"},
-      {"name": "NUMERO_ERRORE[39]", "address": 40238, "type": "INT"},
-      {"name": "NUMERO_ERRORE[40]", "address": 40239, "type": "INT"}
+      {
+        "name": "NUMERO_ERRORE[21]",
+        "address": 219,
+        "type": "INT"
+      },
+      {
+        "name": "NUMERO_ERRORE[22]",
+        "address": 220,
+        "type": "INT"
+      },
+      {
+        "name": "NUMERO_ERRORE[23]",
+        "address": 221,
+        "type": "INT"
+      },
+      {
+        "name": "NUMERO_ERRORE[24]",
+        "address": 222,
+        "type": "INT"
+      },
+      {
+        "name": "NUMERO_ERRORE[25]",
+        "address": 223,
+        "type": "INT"
+      },
+      {
+        "name": "NUMERO_ERRORE[26]",
+        "address": 224,
+        "type": "INT"
+      },
+      {
+        "name": "NUMERO_ERRORE[27]",
+        "address": 225,
+        "type": "INT"
+      },
+      {
+        "name": "NUMERO_ERRORE[28]",
+        "address": 226,
+        "type": "INT"
+      },
+      {
+        "name": "NUMERO_ERRORE[29]",
+        "address": 227,
+        "type": "INT"
+      },
+      {
+        "name": "NUMERO_ERRORE[30]",
+        "address": 228,
+        "type": "INT"
+      },
+      {
+        "name": "NUMERO_ERRORE[31]",
+        "address": 229,
+        "type": "INT"
+      },
+      {
+        "name": "NUMERO_ERRORE[32]",
+        "address": 230,
+        "type": "INT"
+      },
+      {
+        "name": "NUMERO_ERRORE[33]",
+        "address": 231,
+        "type": "INT"
+      },
+      {
+        "name": "NUMERO_ERRORE[34]",
+        "address": 232,
+        "type": "INT"
+      },
+      {
+        "name": "NUMERO_ERRORE[35]",
+        "address": 233,
+        "type": "INT"
+      },
+      {
+        "name": "NUMERO_ERRORE[36]",
+        "address": 234,
+        "type": "INT"
+      },
+      {
+        "name": "NUMERO_ERRORE[37]",
+        "address": 235,
+        "type": "INT"
+      },
+      {
+        "name": "NUMERO_ERRORE[38]",
+        "address": 236,
+        "type": "INT"
+      },
+      {
+        "name": "NUMERO_ERRORE[39]",
+        "address": 237,
+        "type": "INT"
+      },
+      {
+        "name": "NUMERO_ERRORE[40]",
+        "address": 238,
+        "type": "INT"
+      }
     ],
     "Error History & Reset": [
-      {"name": "RESET_STORICO_ALLARMI", "address": 100, "type": "BOOL"}
+      {
+        "name": "RESET_STORICO_ALLARMI",
+        "address": 100,
+        "type": "BOOL"
+      }
     ]
   },
   "Sensors & Inputs": {
     "General Sensors": [
-      {"name": "Pressostato_aria_generale", "address": 40010, "type": "BOOL"},
-      {"name": "Stato_centralina_sicurezza", "address": 40011, "type": "BOOL"},
-      {"name": "Sensore_porta_DX", "address": 40012, "type": "BOOL"},
-      {"name": "Sensore_porta_SX", "address": 40013, "type": "BOOL"}
+      {
+        "name": "Pressostato_aria_generale",
+        "address": 9,
+        "type": "BOOL"
+      },
+      {
+        "name": "Stato_centralina_sicurezza",
+        "address": 10,
+        "type": "BOOL"
+      },
+      {
+        "name": "Sensore_porta_DX",
+        "address": 11,
+        "type": "BOOL"
+      },
+      {
+        "name": "Sensore_porta_SX",
+        "address": 12,
+        "type": "BOOL"
+      }
     ],
     "Loader Sensors": [
-      {"name": "SENSORE_SALITA_CARICATORE", "address": 40020, "type": "BOOL"},
-      {"name": "SENSORE_DISCESA_CARICATORE", "address": 40021, "type": "BOOL"},
-      {"name": "CARICATORE_ALTO", "address": 40022, "type": "BOOL"},
-      {"name": "CARICATORE_BASSO", "address": 40023, "type": "BOOL"}
+      {
+        "name": "SENSORE_SALITA_CARICATORE",
+        "address": 19,
+        "type": "BOOL"
+      },
+      {
+        "name": "SENSORE_DISCESA_CARICATORE",
+        "address": 20,
+        "type": "BOOL"
+      },
+      {
+        "name": "CARICATORE_ALTO",
+        "address": 21,
+        "type": "BOOL"
+      },
+      {
+        "name": "CARICATORE_BASSO",
+        "address": 22,
+        "type": "BOOL"
+      }
     ],
     "Blade Sensors": [
-      {"name": "SENS_SALITA_LAME", "address": 40030, "type": "BOOL"},
-      {"name": "SENS_DISCESA_LAME", "address": 40031, "type": "BOOL"}
+      {
+        "name": "SENS_SALITA_LAME",
+        "address": 29,
+        "type": "BOOL"
+      },
+      {
+        "name": "SENS_DISCESA_LAME",
+        "address": 30,
+        "type": "BOOL"
+      }
     ],
     "Needle Sensors": [
-      {"name": "SENS_AVANTI_AGHI_LUNG_1", "address": 40040, "type": "BOOL"},
-      {"name": "SENS_AVANTI_AGHI_LUNG_2", "address": 40041, "type": "BOOL"},
-      {"name": "Sensore_indietro_aghi", "address": 40042, "type": "BOOL"}
+      {
+        "name": "SENS_AVANTI_AGHI_LUNG_1",
+        "address": 39,
+        "type": "BOOL"
+      },
+      {
+        "name": "SENS_AVANTI_AGHI_LUNG_2",
+        "address": 40,
+        "type": "BOOL"
+      },
+      {
+        "name": "Sensore_indietro_aghi",
+        "address": 41,
+        "type": "BOOL"
+      }
     ],
     "Pusher Sensors": [
-      {"name": "Sensore_avanti_spintore", "address": 40050, "type": "BOOL"},
-      {"name": "Sensore_spintore_indietro", "address": 40051, "type": "BOOL"},
-      {"name": "Sensore_spintore_intermedio", "address": 40052, "type": "BOOL"},
-      {"name": "Sensore_spintore_avvicinamento1", "address": 40053, "type": "BOOL"},
-      {"name": "Sensore_spintore_avvicinamento2", "address": 40054, "type": "BOOL"}
+      {
+        "name": "Sensore_avanti_spintore",
+        "address": 49,
+        "type": "BOOL"
+      },
+      {
+        "name": "Sensore_spintore_indietro",
+        "address": 50,
+        "type": "BOOL"
+      },
+      {
+        "name": "Sensore_spintore_intermedio",
+        "address": 51,
+        "type": "BOOL"
+      },
+      {
+        "name": "Sensore_spintore_avvicinamento1",
+        "address": 52,
+        "type": "BOOL"
+      },
+      {
+        "name": "Sensore_spintore_avvicinamento2",
+        "address": 53,
+        "type": "BOOL"
+      }
     ],
     "Other Sensors": [
-      {"name": "Sensore_salita_cubo_taglio", "address": 40060, "type": "BOOL"}
+      {
+        "name": "Sensore_salita_cubo_taglio",
+        "address": 59,
+        "type": "BOOL"
+      }
     ]
   },
   "Machine Configuration": {
     "Length Parameters": [
-      {"name": "LUNGHEZZA_HMI", "address": 40300, "type": "INT"},
-      {"name": "LUNGHEZZA_PRODOTTO_1", "address": 40301, "type": "INT"},
-      {"name": "LUNGHEZZA_PRODOTTO_2", "address": 40302, "type": "INT"},
-      {"name": "LUNGHEZZA_STECCO", "address": 40303, "type": "INT"},
-      {"name": "LUNGHEZZA_STECCO_1", "address": 40304, "type": "INT"},
-      {"name": "LUNGHEZZA_STECCO_2", "address": 40305, "type": "INT"},
-      {"name": "ESTENS_QUOTA_LUNG_HMI", "address": 40306, "type": "INT"}
+      {
+        "name": "LUNGHEZZA_HMI",
+        "address": 299,
+        "type": "INT"
+      },
+      {
+        "name": "LUNGHEZZA_PRODOTTO_1",
+        "address": 300,
+        "type": "INT"
+      },
+      {
+        "name": "LUNGHEZZA_PRODOTTO_2",
+        "address": 301,
+        "type": "INT"
+      },
+      {
+        "name": "LUNGHEZZA_STECCO",
+        "address": 302,
+        "type": "INT"
+      },
+      {
+        "name": "LUNGHEZZA_STECCO_1",
+        "address": 303,
+        "type": "INT"
+      },
+      {
+        "name": "LUNGHEZZA_STECCO_2",
+        "address": 304,
+        "type": "INT"
+      },
+      {
+        "name": "ESTENS_QUOTA_LUNG_HMI",
+        "address": 305,
+        "type": "INT"
+      }
     ],
     "Format Settings": [
-      {"name": "FORMATO_X_VERSO_HMI", "address": 40310, "type": "INT"},
-      {"name": "FORMATO_Y_VERSO_HMI", "address": 40311, "type": "INT"},
-      {"name": "DIAMETRO_STECCO", "address": 40312, "type": "INT"}
+      {
+        "name": "FORMATO_X_VERSO_HMI",
+        "address": 309,
+        "type": "INT"
+      },
+      {
+        "name": "FORMATO_Y_VERSO_HMI",
+        "address": 310,
+        "type": "INT"
+      },
+      {
+        "name": "DIAMETRO_STECCO",
+        "address": 311,
+        "type": "INT"
+      }
     ],
     "Speed Parameters": [
-      {"name": "VELOCITA_SPINTORE", "address": 40320, "type": "INT"},
-      {"name": "VELOC_MAX_SPINTORE", "address": 40321, "type": "INT"},
-      {"name": "VELOC_MIN_SPINTORE", "address": 40322, "type": "INT"},
-      {"name": "VELOC_MAX_SALITA_CARICATORE", "address": 40323, "type": "INT"},
-      {"name": "VELOC_MIN_SALITA_CARICATORE", "address": 40324, "type": "INT"},
-      {"name": "VELOC_MAX_DISCESA_CARICATORE", "address": 40325, "type": "INT"},
-      {"name": "VELOC_MIN_DISCESA_CARICATORE", "address": 40326, "type": "INT"}
+      {
+        "name": "VELOCITA_SPINTORE",
+        "address": 319,
+        "type": "INT"
+      },
+      {
+        "name": "VELOC_MAX_SPINTORE",
+        "address": 320,
+        "type": "INT"
+      },
+      {
+        "name": "VELOC_MIN_SPINTORE",
+        "address": 321,
+        "type": "INT"
+      },
+      {
+        "name": "VELOC_MAX_SALITA_CARICATORE",
+        "address": 322,
+        "type": "INT"
+      },
+      {
+        "name": "VELOC_MIN_SALITA_CARICATORE",
+        "address": 323,
+        "type": "INT"
+      },
+      {
+        "name": "VELOC_MAX_DISCESA_CARICATORE",
+        "address": 324,
+        "type": "INT"
+      },
+      {
+        "name": "VELOC_MIN_DISCESA_CARICATORE",
+        "address": 325,
+        "type": "INT"
+      }
     ]
   },
   "Axis Positions": {
     "Log Axis": [
-      {"name": "QUOTA_ASSE_CEPPI", "address": 40400, "type": "INT"},
-      {"name": "QUOTA_ASSE_CEPPI_RICHIESTA", "address": 40401, "type": "INT"},
-      {"name": "OFFSET_ASSE_CEPPI", "address": 40402, "type": "INT"}
+      {
+        "name": "QUOTA_ASSE_CEPPI",
+        "address": 399,
+        "type": "INT"
+      },
+      {
+        "name": "QUOTA_ASSE_CEPPI_RICHIESTA",
+        "address": 400,
+        "type": "INT"
+      },
+      {
+        "name": "OFFSET_ASSE_CEPPI",
+        "address": 401,
+        "type": "INT"
+      }
     ],
     "Loader Axis": [
-      {"name": "QUOTA_ASSE_CARICATORE", "address": 40410, "type": "INT"},
-      {"name": "QUOTA_CARICATORE_RICHIESTA", "address": 40411, "type": "INT"}
+      {
+        "name": "QUOTA_ASSE_CARICATORE",
+        "address": 409,
+        "type": "INT"
+      },
+      {
+        "name": "QUOTA_CARICATORE_RICHIESTA",
+        "address": 410,
+        "type": "INT"
+      }
     ]
   },
   "Timing Parameters": {
     "Cycle Times": [
-      {"name": "TEMPO_MASSIMO", "address": 40500, "type": "INT"},
-      {"name": "TEMPO_MINIMO", "address": 40501, "type": "INT"},
-      {"name": "TEMPO_SAL_DIS_CARICATORE", "address": 40502, "type": "INT"}
+      {
+        "name": "TEMPO_MASSIMO",
+        "address": 499,
+        "type": "INT"
+      },
+      {
+        "name": "TEMPO_MINIMO",
+        "address": 500,
+        "type": "INT"
+      },
+      {
+        "name": "TEMPO_SAL_DIS_CARICATORE",
+        "address": 501,
+        "type": "INT"
+      }
     ]
   },
   "Homing Status": {
     "Homing OK": [
-      {"name": "OK_HOME_ASSE_CARRO", "address": 40600, "type": "BOOL"},
-      {"name": "OK_HOME_CARICATORE_CEPPI", "address": 40601, "type": "BOOL"},
-      {"name": "OK_HOME_CENTRALINA_SICUREZZA", "address": 40602, "type": "BOOL"},
-      {"name": "OK_HOME_INDIETRO_AGHI", "address": 40603, "type": "BOOL"},
-      {"name": "OK_HOME_INDIETRO_SPINTORE", "address": 40604, "type": "BOOL"},
-      {"name": "OK_HOME_PRESSIONE_ARIA", "address": 40605, "type": "BOOL"},
-      {"name": "OK_HOME_SALITA_LAME", "address": 40606, "type": "BOOL"},
-      {"name": "BIT_OK_HOME", "address": 40607, "type": "BOOL"}
+      {
+        "name": "OK_HOME_ASSE_CARRO",
+        "address": 599,
+        "type": "BOOL"
+      },
+      {
+        "name": "OK_HOME_CARICATORE_CEPPI",
+        "address": 600,
+        "type": "BOOL"
+      },
+      {
+        "name": "OK_HOME_CENTRALINA_SICUREZZA",
+        "address": 601,
+        "type": "BOOL"
+      },
+      {
+        "name": "OK_HOME_INDIETRO_AGHI",
+        "address": 602,
+        "type": "BOOL"
+      },
+      {
+        "name": "OK_HOME_INDIETRO_SPINTORE",
+        "address": 603,
+        "type": "BOOL"
+      },
+      {
+        "name": "OK_HOME_PRESSIONE_ARIA",
+        "address": 604,
+        "type": "BOOL"
+      },
+      {
+        "name": "OK_HOME_SALITA_LAME",
+        "address": 605,
+        "type": "BOOL"
+      },
+      {
+        "name": "BIT_OK_HOME",
+        "address": 606,
+        "type": "BOOL"
+      }
     ],
     "Homing Errors": [
-      {"name": "ERROR_HOME_ASSE_CARRO", "address": 40620, "type": "BOOL"},
-      {"name": "ERROR_HOME_CARICATORE_CEPPI", "address": 40621, "type": "BOOL"},
-      {"name": "ERROR_HOME_CENTRALINA_SICUREZZA", "address": 40622, "type": "BOOL"},
-      {"name": "ERROR_HOME_INDIETRO_AGHI", "address": 40623, "type": "BOOL"},
-      {"name": "ERROR_HOME_INDIETRO_SPINTORE", "address": 40624, "type": "BOOL"},
-      {"name": "ERROR_HOME_PRESSIONE_ARIA", "address": 40625, "type": "BOOL"},
-      {"name": "ERROR_HOME_SALITA_LAME", "address": 40626, "type": "BOOL"}
+      {
+        "name": "ERROR_HOME_ASSE_CARRO",
+        "address": 619,
+        "type": "BOOL"
+      },
+      {
+        "name": "ERROR_HOME_CARICATORE_CEPPI",
+        "address": 620,
+        "type": "BOOL"
+      },
+      {
+        "name": "ERROR_HOME_CENTRALINA_SICUREZZA",
+        "address": 621,
+        "type": "BOOL"
+      },
+      {
+        "name": "ERROR_HOME_INDIETRO_AGHI",
+        "address": 622,
+        "type": "BOOL"
+      },
+      {
+        "name": "ERROR_HOME_INDIETRO_SPINTORE",
+        "address": 623,
+        "type": "BOOL"
+      },
+      {
+        "name": "ERROR_HOME_PRESSIONE_ARIA",
+        "address": 624,
+        "type": "BOOL"
+      },
+      {
+        "name": "ERROR_HOME_SALITA_LAME",
+        "address": 625,
+        "type": "BOOL"
+      }
     ],
     "Home Control": [
-      {"name": "BIT_START_HOME", "address": 200, "type": "BOOL"}
+      {
+        "name": "BIT_START_HOME",
+        "address": 200,
+        "type": "BOOL"
+      }
     ]
   },
   "Production Data": {
     "General Counters": [
-      {"name": "CUBI_LAVORATI", "address": 40100, "type": "INT"},
-      {"name": "ORE_LAVORO_REALI", "address": 40101, "type": "INT"},
-      {"name": "ORE_MACCHINA_ACCESA", "address": 40102, "type": "INT"}
+      {
+        "name": "CUBI_LAVORATI",
+        "address": 99,
+        "type": "INT"
+      },
+      {
+        "name": "ORE_LAVORO_REALI",
+        "address": 100,
+        "type": "INT"
+      },
+      {
+        "name": "ORE_MACCHINA_ACCESA",
+        "address": 101,
+        "type": "INT"
+      }
     ],
     "Counters 14-16mm": [
-      {"name": "CUBI_LAVORATI_14", "address": 40110, "type": "INT"},
-      {"name": "CUBI_LAVORATI_15", "address": 40111, "type": "INT"},
-      {"name": "CUBI_LAVORATI_16", "address": 40112, "type": "INT"}
+      {
+        "name": "CUBI_LAVORATI_14",
+        "address": 109,
+        "type": "INT"
+      },
+      {
+        "name": "CUBI_LAVORATI_15",
+        "address": 110,
+        "type": "INT"
+      },
+      {
+        "name": "CUBI_LAVORATI_16",
+        "address": 111,
+        "type": "INT"
+      }
     ],
     "Counters 19-24mm": [
-      {"name": "CUBI_LAVORATI_19", "address": 40120, "type": "INT"},
-      {"name": "CUBI_LAVORATI_21", "address": 40121, "type": "INT"},
-      {"name": "CUBI_LAVORATI_24", "address": 40122, "type": "INT"}
+      {
+        "name": "CUBI_LAVORATI_19",
+        "address": 119,
+        "type": "INT"
+      },
+      {
+        "name": "CUBI_LAVORATI_21",
+        "address": 120,
+        "type": "INT"
+      },
+      {
+        "name": "CUBI_LAVORATI_24",
+        "address": 121,
+        "type": "INT"
+      }
     ],
     "Counters 27-30mm": [
-      {"name": "CUBI_LAVORATI_27", "address": 40130, "type": "INT"},
-      {"name": "CUBI_LAVORATI_30", "address": 40131, "type": "INT"}
+      {
+        "name": "CUBI_LAVORATI_27",
+        "address": 129,
+        "type": "INT"
+      },
+      {
+        "name": "CUBI_LAVORATI_30",
+        "address": 130,
+        "type": "INT"
+      }
     ],
     "Special Formats": [
-      {"name": "CUBI_LAVORATI_15X30", "address": 40140, "type": "INT"},
-      {"name": "CUBI_LAVORATI_21X42", "address": 40141, "type": "INT"},
-      {"name": "CUBI_LAVORATI_21X42s1", "address": 40142, "type": "INT"}
+      {
+        "name": "CUBI_LAVORATI_15X30",
+        "address": 139,
+        "type": "INT"
+      },
+      {
+        "name": "CUBI_LAVORATI_21X42",
+        "address": 140,
+        "type": "INT"
+      },
+      {
+        "name": "CUBI_LAVORATI_21X42s1",
+        "address": 141,
+        "type": "INT"
+      }
     ],
     "Reset Counters": [
-      {"name": "RESET_ORE_LAVORO_REALI", "address": 300, "type": "BOOL"},
-      {"name": "RESET_ORE_MACCHINA_ACCESA", "address": 301, "type": "BOOL"},
-      {"name": "RESET_CUBI_PRODOTTI_14", "address": 310, "type": "BOOL"},
-      {"name": "RESET_CUBI_PRODOTTI_15", "address": 311, "type": "BOOL"},
-      {"name": "RESET_CUBI_PRODOTTI_16", "address": 312, "type": "BOOL"},
-      {"name": "RESET_CUBI_PRODOTTI_19", "address": 313, "type": "BOOL"},
-      {"name": "RESET_CUBI_PRODOTTI_21", "address": 314, "type": "BOOL"},
-      {"name": "RESET_CUBI_PRODOTTI_24", "address": 315, "type": "BOOL"}
+      {
+        "name": "RESET_ORE_LAVORO_REALI",
+        "address": 300,
+        "type": "BOOL"
+      },
+      {
+        "name": "RESET_ORE_MACCHINA_ACCESA",
+        "address": 301,
+        "type": "BOOL"
+      },
+      {
+        "name": "RESET_CUBI_PRODOTTI_14",
+        "address": 310,
+        "type": "BOOL"
+      },
+      {
+        "name": "RESET_CUBI_PRODOTTI_15",
+        "address": 311,
+        "type": "BOOL"
+      },
+      {
+        "name": "RESET_CUBI_PRODOTTI_16",
+        "address": 312,
+        "type": "BOOL"
+      },
+      {
+        "name": "RESET_CUBI_PRODOTTI_19",
+        "address": 313,
+        "type": "BOOL"
+      },
+      {
+        "name": "RESET_CUBI_PRODOTTI_21",
+        "address": 314,
+        "type": "BOOL"
+      },
+      {
+        "name": "RESET_CUBI_PRODOTTI_24",
+        "address": 315,
+        "type": "BOOL"
+      }
     ],
     "Working Mode": [
-      {"name": "STECCO_SINGOLO", "address": 320, "type": "BOOL"},
-      {"name": "STECCO_DOPPIO", "address": 321, "type": "BOOL"}
+      {
+        "name": "STECCO_SINGOLO",
+        "address": 320,
+        "type": "BOOL"
+      },
+      {
+        "name": "STECCO_DOPPIO",
+        "address": 321,
+        "type": "BOOL"
+      }
     ]
   },
   "Commands & Outputs": {
     "Pusher Commands": [
-      {"name": "Comando_avanti_spintore", "address": 400, "type": "BOOL"}
+      {
+        "name": "Comando_avanti_spintore",
+        "address": 400,
+        "type": "BOOL"
+      }
     ],
     "Blade Commands": [
-      {"name": "Comando_discesa_lame", "address": 410, "type": "BOOL"}
+      {
+        "name": "Comando_discesa_lame",
+        "address": 410,
+        "type": "BOOL"
+      }
     ],
     "Loader Commands": [
-      {"name": "Comando_salita_caricatore_ceppi", "address": 420, "type": "BOOL"},
-      {"name": "Comando_discesa_caricatore_ceppi", "address": 421, "type": "BOOL"}
+      {
+        "name": "Comando_salita_caricatore_ceppi",
+        "address": 420,
+        "type": "BOOL"
+      },
+      {
+        "name": "Comando_discesa_caricatore_ceppi",
+        "address": 421,
+        "type": "BOOL"
+      }
     ],
     "Needle Commands": [
-      {"name": "Comando_avanti_aghi", "address": 430, "type": "BOOL"}
+      {
+        "name": "Comando_avanti_aghi",
+        "address": 430,
+        "type": "BOOL"
+      }
     ],
     "Gripper Commands": [
-      {"name": "Comando_apre_morsa_cubo", "address": 440, "type": "BOOL"},
-      {"name": "Comando_chiude_morsa_cubo", "address": 441, "type": "BOOL"}
+      {
+        "name": "Comando_apre_morsa_cubo",
+        "address": 440,
+        "type": "BOOL"
+      },
+      {
+        "name": "Comando_chiude_morsa_cubo",
+        "address": 441,
+        "type": "BOOL"
+      }
     ],
     "General Commands": [
-      {"name": "Comando_abilitazione_valvole", "address": 450, "type": "BOOL"},
-      {"name": "Comando_elettrovalvola_aria_generale", "address": 451, "type": "BOOL"}
+      {
+        "name": "Comando_abilitazione_valvole",
+        "address": 450,
+        "type": "BOOL"
+      },
+      {
+        "name": "Comando_elettrovalvola_aria_generale",
+        "address": 451,
+        "type": "BOOL"
+      }
     ]
   },
   "Buttons & Indicators": {
     "Push Buttons": [
-      {"name": "Pulsante_start_ceppi", "address": 40700, "type": "BOOL"},
-      {"name": "Pulsante_start_taglio", "address": 40701, "type": "BOOL"},
-      {"name": "Pulsante_Pausa_Lavoro", "address": 40702, "type": "BOOL"}
+      {
+        "name": "Pulsante_start_ceppi",
+        "address": 699,
+        "type": "BOOL"
+      },
+      {
+        "name": "Pulsante_start_taglio",
+        "address": 700,
+        "type": "BOOL"
+      },
+      {
+        "name": "Pulsante_Pausa_Lavoro",
+        "address": 701,
+        "type": "BOOL"
+      }
     ],
     "Button Lamps": [
-      {"name": "Spia_pulsante_start_ceppi", "address": 500, "type": "BOOL"},
-      {"name": "Spia_pulsante_start_taglio", "address": 501, "type": "BOOL"},
-      {"name": "Spia_pulsante_Pausa_Lavoro", "address": 502, "type": "BOOL"},
-      {"name": "Spia_pulsante_marcia", "address": 503, "type": "BOOL"},
-      {"name": "Spia_pulsante_reset", "address": 504, "type": "BOOL"}
+      {
+        "name": "Spia_pulsante_start_ceppi",
+        "address": 500,
+        "type": "BOOL"
+      },
+      {
+        "name": "Spia_pulsante_start_taglio",
+        "address": 501,
+        "type": "BOOL"
+      },
+      {
+        "name": "Spia_pulsante_Pausa_Lavoro",
+        "address": 502,
+        "type": "BOOL"
+      },
+      {
+        "name": "Spia_pulsante_marcia",
+        "address": 503,
+        "type": "BOOL"
+      },
+      {
+        "name": "Spia_pulsante_reset",
+        "address": 504,
+        "type": "BOOL"
+      }
     ]
   },
   "System Settings": {
     "Date & Time": [
-      {"name": "GIORNO_HMI", "address": 40800, "type": "INT"},
-      {"name": "MESE_HMI", "address": 40801, "type": "INT"},
-      {"name": "ANNO_HMI", "address": 40802, "type": "INT"},
-      {"name": "ORA_HMI", "address": 40803, "type": "INT"},
-      {"name": "MINUTI_HMI", "address": 40804, "type": "INT"}
+      {
+        "name": "GIORNO_HMI",
+        "address": 799,
+        "type": "INT"
+      },
+      {
+        "name": "MESE_HMI",
+        "address": 800,
+        "type": "INT"
+      },
+      {
+        "name": "ANNO_HMI",
+        "address": 801,
+        "type": "INT"
+      },
+      {
+        "name": "ORA_HMI",
+        "address": 802,
+        "type": "INT"
+      },
+      {
+        "name": "MINUTI_HMI",
+        "address": 803,
+        "type": "INT"
+      }
     ],
     "Language": [
-      {"name": "SCELTA_LINGUA", "address": 40810, "type": "INT"},
-      {"name": "ITALIANO", "address": 600, "type": "BOOL"},
-      {"name": "INGLESE", "address": 601, "type": "BOOL"},
-      {"name": "FRANCESE", "address": 602, "type": "BOOL"},
-      {"name": "SPAGNOLO", "address": 603, "type": "BOOL"}
+      {
+        "name": "SCELTA_LINGUA",
+        "address": 809,
+        "type": "INT"
+      },
+      {
+        "name": "ITALIANO",
+        "address": 600,
+        "type": "BOOL"
+      },
+      {
+        "name": "INGLESE",
+        "address": 601,
+        "type": "BOOL"
+      },
+      {
+        "name": "FRANCESE",
+        "address": 602,
+        "type": "BOOL"
+      },
+      {
+        "name": "SPAGNOLO",
+        "address": 603,
+        "type": "BOOL"
+      }
     ],
     "Machine Info": [
-      {"name": "CLIENTE", "address": 40900, "type": "INT"},
-      {"name": "MATRICOLA", "address": 40901, "type": "INT"},
-      {"name": "VERSIONE_SW", "address": 40902, "type": "INT"}
+      {
+        "name": "CLIENTE",
+        "address": 899,
+        "type": "INT"
+      },
+      {
+        "name": "MATRICOLA",
+        "address": 900,
+        "type": "INT"
+      },
+      {
+        "name": "VERSIONE_SW",
+        "address": 901,
+        "type": "INT"
+      }
     ]
   },
   "Maintenance": {
     "Warranty Info": [
-      {"name": "GIORNI_GARANZIA", "address": 41000, "type": "INT"},
-      {"name": "ORE_GARANZIA", "address": 41001, "type": "INT"},
-      {"name": "GIORNI_RESIDUI_GARANZIA", "address": 41002, "type": "INT"},
-      {"name": "ORE_RESIDUE_GARANZIA", "address": 41003, "type": "INT"}
+      {
+        "name": "GIORNI_GARANZIA",
+        "address": 999,
+        "type": "INT"
+      },
+      {
+        "name": "ORE_GARANZIA",
+        "address": 1000,
+        "type": "INT"
+      },
+      {
+        "name": "GIORNI_RESIDUI_GARANZIA",
+        "address": 1001,
+        "type": "INT"
+      },
+      {
+        "name": "ORE_RESIDUE_GARANZIA",
+        "address": 1002,
+        "type": "INT"
+      }
     ],
     "Maintenance": [
-      {"name": "GIORNI_MANUTENZIONE", "address": 41010, "type": "INT"},
-      {"name": "ORE_MANUTENZIONE", "address": 41011, "type": "INT"}
+      {
+        "name": "GIORNI_MANUTENZIONE",
+        "address": 1009,
+        "type": "INT"
+      },
+      {
+        "name": "ORE_MANUTENZIONE",
+        "address": 1010,
+        "type": "INT"
+      }
     ]
   }
 }
