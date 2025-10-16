@@ -138,14 +138,17 @@ ipcMain.handle('read-coils', async (event, { address, length }) => {
     } else if (address >= 1 && address <= 9999 && address < 10000) {
       modbusAddress = address;
     }
-    console.log(`[Main] Reading coils: address=${address} (Modbus: ${modbusAddress}), length=${length}`);
+    console.log(`[Main] Reading BOOL as Holding Register: address=${address} (Modbus: ${modbusAddress}), length=${length}`);
     if (!isConnected || !modbusClient) {
       throw new Error('Not connected to PLC');
     }
     
-    const data = await modbusClient.readCoils(modbusAddress, length);
-    return { success: true, data: data.data };
+    const data = await modbusClient.readHoldingRegisters(modbusAddress, length);
+    const boolData = data.data.map(val => val !== 0);
+    console.log(`[Main] Read BOOL values:`, boolData);
+    return { success: true, data: boolData };
   } catch (error) {
+    console.error(`[Main] Read BOOL failed:`, error.message);
     return { success: false, message: `Read failed: ${error.message}` };
   }
 });
@@ -160,14 +163,17 @@ ipcMain.handle('write-coil', async (event, { address, value }) => {
     } else if (address >= 1 && address <= 9999 && address < 10000) {
       modbusAddress = address;
     }
-    console.log(`[Main] Writing coil: address=${address} (Modbus: ${modbusAddress}), value=${value}`);
+    const intValue = value ? 1 : 0;
+    console.log(`[Main] Writing BOOL as Holding Register: address=${address} (Modbus: ${modbusAddress}), value=${value} (${intValue})`);
     if (!isConnected || !modbusClient) {
       throw new Error('Not connected to PLC');
     }
     
-    await modbusClient.writeCoil(modbusAddress, value);
-    return { success: true, message: 'Coil written successfully' };
+    await modbusClient.writeRegister(modbusAddress, intValue);
+    console.log(`[Main] BOOL written successfully`);
+    return { success: true, message: 'Value written successfully' };
   } catch (error) {
+    console.error(`[Main] Write BOOL failed:`, error.message);
     return { success: false, message: `Write failed: ${error.message}` };
   }
 });
