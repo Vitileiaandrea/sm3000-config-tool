@@ -23,7 +23,8 @@
       "preload.js",
       "index.html",
       "app.js",
-      "variables_structure.json",
+      "variables_complete.json",
+      "icon.png",
       "node_modules/**/*"
     ],
     "win": {
