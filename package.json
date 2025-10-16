@@ -15,6 +15,7 @@
   "build": {
     "appId": "com.sm3000.config",
     "productName": "SM3000 Configuration Tool",
+    "publish": null,
     "directories": {
       "output": "dist"
     },
