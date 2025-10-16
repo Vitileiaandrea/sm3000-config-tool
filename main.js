@@ -79,12 +79,16 @@ ipcMain.handle('disconnect-plc', async () => {
 
 ipcMain.handle('read-holding-registers', async (event, { address, length }) => {
   try {
-    console.log(`[Main] Reading holding registers: address=${address}, length=${length}`);
+    let modbusAddress = address;
+    if (address >= 40001 && address <= 49999) {
+      modbusAddress = address - 40001;
+    }
+    console.log(`[Main] Reading holding registers: address=${address} (Modbus: ${modbusAddress}), length=${length}`);
     if (!isConnected || !modbusClient) {
       throw new Error('Not connected to PLC');
     }
     
-    const data = await modbusClient.readHoldingRegisters(address, length);
+    const data = await modbusClient.readHoldingRegisters(modbusAddress, length);
     console.log(`[Main] Read successful, data:`, data.data);
     return { success: true, data: data.data };
   } catch (error) {
@@ -95,11 +99,16 @@ ipcMain.handle('read-holding-registers', async (event, { address, length }) => {
 
 ipcMain.handle('write-holding-register', async (event, { address, value }) => {
   try {
+    let modbusAddress = address;
+    if (address >= 40001 && address <= 49999) {
+      modbusAddress = address - 40001;
+    }
+    console.log(`[Main] Writing holding register: address=${address} (Modbus: ${modbusAddress}), value=${value}`);
     if (!isConnected || !modbusClient) {
       throw new Error('Not connected to PLC');
     }
     
-    await modbusClient.writeRegister(address, value);
+    await modbusClient.writeRegister(modbusAddress, value);
     return { success: true, message: 'Value written successfully' };
   } catch (error) {
     return { success: false, message: `Write failed: ${error.message}` };
@@ -121,11 +130,20 @@ ipcMain.handle('write-holding-registers', async (event, { address, values }) => 
 
 ipcMain.handle('read-coils', async (event, { address, length }) => {
   try {
+    let modbusAddress = address;
+    if (address >= 40001 && address <= 49999) {
+      modbusAddress = address - 40001;
+    } else if (address >= 10001 && address <= 19999) {
+      modbusAddress = address - 10001;
+    } else if (address >= 1 && address <= 9999 && address < 10000) {
+      modbusAddress = address;
+    }
+    console.log(`[Main] Reading coils: address=${address} (Modbus: ${modbusAddress}), length=${length}`);
     if (!isConnected || !modbusClient) {
       throw new Error('Not connected to PLC');
     }
     
-    const data = await modbusClient.readCoils(address, length);
+    const data = await modbusClient.readCoils(modbusAddress, length);
     return { success: true, data: data.data };
   } catch (error) {
     return { success: false, message: `Read failed: ${error.message}` };
@@ -134,11 +152,20 @@ ipcMain.handle('read-coils', async (event, { address, length }) => {
 
 ipcMain.handle('write-coil', async (event, { address, value }) => {
   try {
+    let modbusAddress = address;
+    if (address >= 40001 && address <= 49999) {
+      modbusAddress = address - 40001;
+    } else if (address >= 10001 && address <= 19999) {
+      modbusAddress = address - 10001;
+    } else if (address >= 1 && address <= 9999 && address < 10000) {
+      modbusAddress = address;
+    }
+    console.log(`[Main] Writing coil: address=${address} (Modbus: ${modbusAddress}), value=${value}`);
     if (!isConnected || !modbusClient) {
       throw new Error('Not connected to PLC');
     }
     
-    await modbusClient.writeCoil(address, value);
+    await modbusClient.writeCoil(modbusAddress, value);
     return { success: true, message: 'Coil written successfully' };
   } catch (error) {
     return { success: false, message: `Write failed: ${error.message}` };
