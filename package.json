@@ -15,6 +15,7 @@
   "build": {
     "appId": "com.sm3000.config",
     "productName": "SM3000 Configuration Tool",
+    "publish": null,
     "directories": {
       "output": "dist"
     },
@@ -23,7 +24,8 @@
       "preload.js",
       "index.html",
       "app.js",
-      "variables_structure.json",
+      "variables_complete.json",
+      "icon.png",
       "node_modules/**/*"
     ],
     "win": {
