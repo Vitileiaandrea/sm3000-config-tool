@@ -1,0 +1,58 @@
+name: Build Windows EXE
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+    
+    - name: Install dependencies
+      run: npm install
+    
+    - name: Build Windows EXE
+      run: npm run build:win
+    
+    - name: Upload EXE artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: SM3000-Windows-EXE
+        path: dist/*.exe
+        retention-days: 90
+    
+    - name: Create Release (optional)
+      if: github.ref == 'refs/heads/main'
+      uses: softprops/action-gh-release@v1
+      with:
+        files: dist/*.exe
+        tag_name: v1.0.${{ github.run_number }}
+        name: SM3000 v1.0.${{ github.run_number }}
+        body: |
+          ## SM3000 Configuration Tool - Windows EXE
+          
+          ### Download & Install:
+          1. Scarica il file `.exe`
+          2. Doppio click per avviare l'installer
+          3. Segui il wizard di installazione
+          4. L'app sarà installata e pronta all'uso!
+          
+          ### Caratteristiche:
+          - ✅ Connessione Modbus TCP/IP diretta al PLC
+          - ✅ 212 variabili PLC mappate
+          - ✅ Interfaccia grafica intuitiva
+          - ✅ Dashboard in tempo reale
+          
+          **Pronto per la produzione!**
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
