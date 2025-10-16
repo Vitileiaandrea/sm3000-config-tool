@@ -79,13 +79,16 @@ ipcMain.handle('disconnect-plc', async () => {
 
 ipcMain.handle('read-holding-registers', async (event, { address, length }) => {
   try {
+    console.log(`[Main] Reading holding registers: address=${address}, length=${length}`);
     if (!isConnected || !modbusClient) {
       throw new Error('Not connected to PLC');
     }
     
     const data = await modbusClient.readHoldingRegisters(address, length);
+    console.log(`[Main] Read successful, data:`, data.data);
     return { success: true, data: data.data };
   } catch (error) {
+    console.error(`[Main] Read failed:`, error.message);
     return { success: false, message: `Read failed: ${error.message}` };
   }
 });
