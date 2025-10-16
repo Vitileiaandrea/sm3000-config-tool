@@ -30,29 +30,3 @@ jobs:
         name: SM3000-Windows-EXE
         path: dist/*.exe
         retention-days: 90
-    
-    - name: Create Release (optional)
-      if: github.ref == 'refs/heads/main'
-      uses: softprops/action-gh-release@v1
-      with:
-        files: dist/*.exe
-        tag_name: v1.0.${{ github.run_number }}
-        name: SM3000 v1.0.${{ github.run_number }}
-        body: |
-          ## SM3000 Configuration Tool - Windows EXE
-          
-          ### Download & Install:
-          1. Scarica il file `.exe`
-          2. Doppio click per avviare l'installer
-          3. Segui il wizard di installazione
-          4. L'app sarà installata e pronta all'uso!
-          
-          ### Caratteristiche:
-          - ✅ Connessione Modbus TCP/IP diretta al PLC
-          - ✅ 212 variabili PLC mappate
-          - ✅ Interfaccia grafica intuitiva
-          - ✅ Dashboard in tempo reale
-          
-          **Pronto per la produzione!**
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
