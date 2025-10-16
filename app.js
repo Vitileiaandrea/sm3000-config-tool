@@ -140,6 +140,27 @@ class SM3000App {
         sidebar.className = 'sidebar';
         sidebar.innerHTML = '<h3>Parameter Categories</h3>';
 
+        const specialItems = [
+            { id: '__LIVE_DASHBOARD__', label: '🔴 Live I/O Monitor', icon: '🔴' },
+            { id: '__MANUAL_CONTROL__', label: '🎮 Controllo Manuale', icon: '🎮' }
+        ];
+
+        specialItems.forEach(special => {
+            const item = document.createElement('div');
+            item.className = 'category-item';
+            item.textContent = special.label;
+            item.style.fontWeight = '600';
+            item.style.background = '#fff9e6';
+            item.onclick = () => this.selectCategory(special.id);
+            sidebar.appendChild(item);
+        });
+
+        const separator = document.createElement('div');
+        separator.style.height = '2px';
+        separator.style.background = '#dee2e6';
+        separator.style.margin = '15px 0';
+        sidebar.appendChild(separator);
+
         Object.keys(variablesStructure).forEach(category => {
             const item = document.createElement('div');
             item.className = 'category-item';
@@ -161,9 +182,16 @@ class SM3000App {
     selectCategory(category) {
         this.currentCategory = category;
         
+        const labelMap = {
+            '__LIVE_DASHBOARD__': '🔴 Live I/O Monitor',
+            '__MANUAL_CONTROL__': '🎮 Controllo Manuale'
+        };
+        
+        const displayLabel = labelMap[category] || category;
+        
         document.querySelectorAll('.category-item').forEach(item => {
             item.classList.remove('active');
-            if (item.textContent === category) {
+            if (item.textContent === displayLabel) {
                 item.classList.add('active');
             }
         });
