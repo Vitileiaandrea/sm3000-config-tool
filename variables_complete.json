@@ -67,7 +67,7 @@
       {"name": "NUMERO_ERRORE[40]", "address": 40239, "type": "INT"}
     ],
     "Error History & Reset": [
-      {"name": "RESET_STORICO_ALLARMI", "address": 00100, "type": "BOOL"}
+      {"name": "RESET_STORICO_ALLARMI", "address": 100, "type": "BOOL"}
     ]
   },
   "Sensors & Inputs": {
@@ -167,7 +167,7 @@
       {"name": "ERROR_HOME_SALITA_LAME", "address": 40626, "type": "BOOL"}
     ],
     "Home Control": [
-      {"name": "BIT_START_HOME", "address": 00200, "type": "BOOL"}
+      {"name": "BIT_START_HOME", "address": 200, "type": "BOOL"}
     ]
   },
   "Production Data": {
@@ -196,41 +196,41 @@
       {"name": "CUBI_LAVORATI_21X42s1", "address": 40142, "type": "INT"}
     ],
     "Reset Counters": [
-      {"name": "RESET_ORE_LAVORO_REALI", "address": 00300, "type": "BOOL"},
-      {"name": "RESET_ORE_MACCHINA_ACCESA", "address": 00301, "type": "BOOL"},
-      {"name": "RESET_CUBI_PRODOTTI_14", "address": 00310, "type": "BOOL"},
-      {"name": "RESET_CUBI_PRODOTTI_15", "address": 00311, "type": "BOOL"},
-      {"name": "RESET_CUBI_PRODOTTI_16", "address": 00312, "type": "BOOL"},
-      {"name": "RESET_CUBI_PRODOTTI_19", "address": 00313, "type": "BOOL"},
-      {"name": "RESET_CUBI_PRODOTTI_21", "address": 00314, "type": "BOOL"},
-      {"name": "RESET_CUBI_PRODOTTI_24", "address": 00315, "type": "BOOL"}
+      {"name": "RESET_ORE_LAVORO_REALI", "address": 300, "type": "BOOL"},
+      {"name": "RESET_ORE_MACCHINA_ACCESA", "address": 301, "type": "BOOL"},
+      {"name": "RESET_CUBI_PRODOTTI_14", "address": 310, "type": "BOOL"},
+      {"name": "RESET_CUBI_PRODOTTI_15", "address": 311, "type": "BOOL"},
+      {"name": "RESET_CUBI_PRODOTTI_16", "address": 312, "type": "BOOL"},
+      {"name": "RESET_CUBI_PRODOTTI_19", "address": 313, "type": "BOOL"},
+      {"name": "RESET_CUBI_PRODOTTI_21", "address": 314, "type": "BOOL"},
+      {"name": "RESET_CUBI_PRODOTTI_24", "address": 315, "type": "BOOL"}
     ],
     "Working Mode": [
-      {"name": "STECCO_SINGOLO", "address": 00320, "type": "BOOL"},
-      {"name": "STECCO_DOPPIO", "address": 00321, "type": "BOOL"}
+      {"name": "STECCO_SINGOLO", "address": 320, "type": "BOOL"},
+      {"name": "STECCO_DOPPIO", "address": 321, "type": "BOOL"}
     ]
   },
   "Commands & Outputs": {
     "Pusher Commands": [
-      {"name": "Comando_avanti_spintore", "address": 00400, "type": "BOOL"}
+      {"name": "Comando_avanti_spintore", "address": 400, "type": "BOOL"}
     ],
     "Blade Commands": [
-      {"name": "Comando_discesa_lame", "address": 00410, "type": "BOOL"}
+      {"name": "Comando_discesa_lame", "address": 410, "type": "BOOL"}
     ],
     "Loader Commands": [
-      {"name": "Comando_salita_caricatore_ceppi", "address": 00420, "type": "BOOL"},
-      {"name": "Comando_discesa_caricatore_ceppi", "address": 00421, "type": "BOOL"}
+      {"name": "Comando_salita_caricatore_ceppi", "address": 420, "type": "BOOL"},
+      {"name": "Comando_discesa_caricatore_ceppi", "address": 421, "type": "BOOL"}
     ],
     "Needle Commands": [
-      {"name": "Comando_avanti_aghi", "address": 00430, "type": "BOOL"}
+      {"name": "Comando_avanti_aghi", "address": 430, "type": "BOOL"}
     ],
     "Gripper Commands": [
-      {"name": "Comando_apre_morsa_cubo", "address": 00440, "type": "BOOL"},
-      {"name": "Comando_chiude_morsa_cubo", "address": 00441, "type": "BOOL"}
+      {"name": "Comando_apre_morsa_cubo", "address": 440, "type": "BOOL"},
+      {"name": "Comando_chiude_morsa_cubo", "address": 441, "type": "BOOL"}
     ],
     "General Commands": [
-      {"name": "Comando_abilitazione_valvole", "address": 00450, "type": "BOOL"},
-      {"name": "Comando_elettrovalvola_aria_generale", "address": 00451, "type": "BOOL"}
+      {"name": "Comando_abilitazione_valvole", "address": 450, "type": "BOOL"},
+      {"name": "Comando_elettrovalvola_aria_generale", "address": 451, "type": "BOOL"}
     ]
   },
   "Buttons & Indicators": {
@@ -240,11 +240,11 @@
       {"name": "Pulsante_Pausa_Lavoro", "address": 40702, "type": "BOOL"}
     ],
     "Button Lamps": [
-      {"name": "Spia_pulsante_start_ceppi", "address": 00500, "type": "BOOL"},
-      {"name": "Spia_pulsante_start_taglio", "address": 00501, "type": "BOOL"},
-      {"name": "Spia_pulsante_Pausa_Lavoro", "address": 00502, "type": "BOOL"},
-      {"name": "Spia_pulsante_marcia", "address": 00503, "type": "BOOL"},
-      {"name": "Spia_pulsante_reset", "address": 00504, "type": "BOOL"}
+      {"name": "Spia_pulsante_start_ceppi", "address": 500, "type": "BOOL"},
+      {"name": "Spia_pulsante_start_taglio", "address": 501, "type": "BOOL"},
+      {"name": "Spia_pulsante_Pausa_Lavoro", "address": 502, "type": "BOOL"},
+      {"name": "Spia_pulsante_marcia", "address": 503, "type": "BOOL"},
+      {"name": "Spia_pulsante_reset", "address": 504, "type": "BOOL"}
     ]
   },
   "System Settings": {
@@ -257,10 +257,10 @@
     ],
     "Language": [
       {"name": "SCELTA_LINGUA", "address": 40810, "type": "INT"},
-      {"name": "ITALIANO", "address": 00600, "type": "BOOL"},
-      {"name": "INGLESE", "address": 00601, "type": "BOOL"},
-      {"name": "FRANCESE", "address": 00602, "type": "BOOL"},
-      {"name": "SPAGNOLO", "address": 00603, "type": "BOOL"}
+      {"name": "ITALIANO", "address": 600, "type": "BOOL"},
+      {"name": "INGLESE", "address": 601, "type": "BOOL"},
+      {"name": "FRANCESE", "address": 602, "type": "BOOL"},
+      {"name": "SPAGNOLO", "address": 603, "type": "BOOL"}
     ],
     "Machine Info": [
       {"name": "CLIENTE", "address": 40900, "type": "INT"},
