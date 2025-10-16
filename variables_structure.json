@@ -1,0 +1,108 @@
+{
+  "Machine Configuration": {
+    "Length Parameters": [
+      "LUNGHEZZA_HMI",
+      "LUNGHEZZA_PRODOTTO_1",
+      "LUNGHEZZA_PRODOTTO_2",
+      "LUNGHEZZA_STECCO",
+      "LUNGHEZZA_STECCO_1",
+      "LUNGHEZZA_STECCO_2",
+      "ESTENS_QUOTA_LUNG_HMI"
+    ],
+    "Format Settings": [
+      "FORMATO_X_VERSO_HMI",
+      "FORMATO_Y_VERSO_HMI",
+      "VAR_FORMATI_XBT",
+      "VAR_LUNGHEZZE_XBT",
+      "VAR_STECCO_XBT"
+    ],
+    "Speed Parameters": [
+      "VELOCITA_SPINTORE",
+      "VELOC_MAX_SPINTORE",
+      "VELOC_MIN_SPINTORE",
+      "VELOC_MAX_SALITA_CARICATORE",
+      "VELOC_MIN_SALITA_CARICATORE",
+      "VELOC_MAX_DISCESA_CARICATORE",
+      "VELOC_MIN_DISCESA_CARICATORE"
+    ]
+  },
+  "Axis Positions": {
+    "Current Positions": [
+      "QUOTA_ASSE_CEPPI",
+      "QUOTA_ASSE_CARICATORE"
+    ],
+    "Target Positions": [
+      "QUOTA_ASSE_CEPPI_RICHIESTA",
+      "QUOTA_CARICATORE_RICHIESTA"
+    ],
+    "Offsets": [
+      "OFFSET_ASSE_CEPPI",
+      "POSIZIONE_IMMISSIONE",
+      "POSIZIONE_IMMISSIONE_SETTAGGI"
+    ]
+  },
+  "Timing Parameters": {
+    "Cycle Times": [
+      "TEMPO_MASSIMO",
+      "TEMPO_MINIMO",
+      "TEMPO_SAL_DIS_CARICATORE"
+    ]
+  },
+  "Machine Status": {
+    "Sensors": [
+      "Pressostato_aria_generale",
+      "SENSORE_SALITA_CARICATORE",
+      "SENSORE_DISCESA_CARICATORE",
+      "SENS_SALITA_LAME",
+      "SENS_DISCESA_LAME",
+      "SENS_AVANTI_AGHI_LUNG_1",
+      "SENS_AVANTI_AGHI_LUNG_2",
+      "Sensore_porta_DX",
+      "Sensore_porta_SX",
+      "Sensore_avanti_spintore",
+      "Sensore_indietro_aghi",
+      "Sensore_spintore_indietro",
+      "Sensore_salita_cubo_taglio"
+    ],
+    "Homing Status": [
+      "OK_HOME_ASSE_CARRO",
+      "OK_HOME_CARICATORE_CEPPI",
+      "OK_HOME_CENTRALINA_SICUREZZA",
+      "OK_HOME_INDIETRO_AGHI",
+      "OK_HOME_INDIETRO_SPINTORE",
+      "OK_HOME_PRESSIONE_ARIA",
+      "OK_HOME_SALITA_LAME"
+    ]
+  },
+  "Production Data": {
+    "Counters": [
+      "CONTATORE_PEZZI",
+      "ORE_LAVORO_REALI",
+      "ORE_MACCHINA_ACCESA"
+    ],
+    "Working Mode": [
+      "STECCO_SINGOLO",
+      "STECCO_DOPPIO"
+    ]
+  },
+  "System Settings": {
+    "Date & Time": [
+      "GIORNO_HMI",
+      "MESE_HMI",
+      "ORA_HMI",
+      "MINUTI_HMI"
+    ],
+    "Language": [
+      "SCELTA_LINGUA",
+      "ITALIANO",
+      "INGLESE",
+      "FRANCESE",
+      "SPAGNOLO",
+      "RUMENO"
+    ],
+    "Display": [
+      "POSIZIONE_LOGO_X",
+      "POSIZIONE_LOGO_Y"
+    ]
+  }
+}

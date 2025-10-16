@@ -1,0 +1,55 @@
+================================================================================
+        SM3000 CONFIGURATION TOOL - INSTALLATION INSTRUCTIONS
+================================================================================
+
+Thank you for downloading the SM3000 Configuration Tool!
+
+QUICK START
+-----------
+
+1. Make sure you have Node.js installed on your computer
+   Download from: https://nodejs.org (LTS version recommended)
+
+2. Extract this ZIP file to a folder on your computer
+
+3. Open a terminal/command prompt in the extracted folder
+
+4. Run the following commands:
+
+   npm install
+   npm start
+
+5. The application will open and you can connect to your PLC!
+
+
+BUILDING INSTALLERS
+-------------------
+
+To create installation packages:
+
+Windows:   npm run build:win
+macOS:     npm run build:mac
+Linux:     npm run build:linux
+
+The installers will be created in the 'dist/' folder.
+
+
+DOCUMENTATION
+-------------
+
+- README.md          - English documentation
+- GUIDA_UTENTE.md    - Italian user guide  
+- BUILD_INSTRUCTIONS.md - Detailed build instructions
+
+
+SUPPORT
+-------
+
+For technical support, please contact:
+Email: [email protected]
+Web: www.sm3000.com/support
+
+
+================================================================================
+© 2025 SM3000 - All rights reserved
+================================================================================
