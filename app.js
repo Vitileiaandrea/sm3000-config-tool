@@ -271,26 +271,33 @@ class SM3000App {
 
         const inputElement = document.getElementById(`param_${address}`);
         
+        console.log(`Reading ${type} from address ${address}`);
+        
         try {
             if (type === 'BOOL') {
+                console.log('Calling readCoils...');
                 const result = await window.plcAPI.readCoils(address, 1);
+                console.log('Read coils result:', result);
                 if (result.success) {
                     inputElement.checked = result.data[0];
-                    this.showMessage('Value read successfully', 'success');
+                    this.showMessage(`✓ Read value: ${result.data[0]}`, 'success');
                 } else {
-                    this.showMessage(result.message, 'error');
+                    this.showMessage(`✗ ${result.message}`, 'error');
                 }
             } else {
+                console.log('Calling readHoldingRegisters...');
                 const result = await window.plcAPI.readHoldingRegisters(address, 1);
+                console.log('Read holding registers result:', result);
                 if (result.success) {
                     inputElement.value = result.data[0];
-                    this.showMessage('Value read successfully', 'success');
+                    this.showMessage(`✓ Read value: ${result.data[0]}`, 'success');
                 } else {
-                    this.showMessage(result.message, 'error');
+                    this.showMessage(`✗ ${result.message}`, 'error');
                 }
             }
         } catch (error) {
-            this.showMessage(`Read error: ${error.message}`, 'error');
+            console.error('Read error:', error);
+            this.showMessage(`✗ Read error: ${error.message}`, 'error');
         }
     }
 
