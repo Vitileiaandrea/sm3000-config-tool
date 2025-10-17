@@ -92,8 +92,10 @@ if (!window.dashboardAdded) {
         let html = '<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 10px;">';
         
         this.dashboardVars.forEach(v => {
+            const varId = v.bit !== undefined ? `${v.address}_${v.bit}` : v.address;
+            const displayName = v.bit !== undefined ? `${v.name} (MW${v.address}.${v.bit})` : v.name;
             html += `
-                <div class="io-indicator" id="io_${v.address}" style="
+                <div class="io-indicator" id="io_${varId}" style="
                     padding: 12px;
                     background: #f5f5f5;
                     border-radius: 6px;
@@ -101,10 +103,10 @@ if (!window.dashboardAdded) {
                     transition: all 0.3s;
                     font-size: 13px;
                 ">
-                    <div style="font-weight: 600; margin-bottom: 5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${v.name}</div>
+                    <div style="font-weight: 600; margin-bottom: 5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${displayName}</div>
                     <div style="display: flex; justify-content: space-between; align-items: center;">
                         <span style="font-size: 11px; color: #666;">${v.category}</span>
-                        <span id="value_${v.address}" style="font-size: 18px;">⚪</span>
+                        <span id="value_${varId}" style="font-size: 18px;">⚪</span>
                     </div>
                 </div>
             `;
@@ -135,22 +137,33 @@ if (!window.dashboardAdded) {
         
         for (const variable of this.dashboardVars) {
             try {
-                const result = await window.plcAPI.readHoldingRegisters(variable.address, 1);
-                if (result.success) {
-                    const value = result.data[0] !== 0;
-                    const indicator = document.getElementById(`io_${variable.address}`);
-                    const valueSpan = document.getElementById(`value_${variable.address}`);
-                    
-                    if (indicator && valueSpan) {
-                        if (value) {
-                            indicator.style.borderLeftColor = '#4CAF50';
-                            indicator.style.background = '#e8f5e9';
-                            valueSpan.textContent = '🟢';
-                        } else {
-                            indicator.style.borderLeftColor = '#ccc';
-                            indicator.style.background = '#f5f5f5';
-                            valueSpan.textContent = '⚪';
-                        }
+                let value = false;
+                
+                if (variable.bit !== undefined) {
+                    const result = await window.plcAPI.readBoolBit(variable.address, variable.bit);
+                    if (result.success) {
+                        value = result.data;
+                    }
+                } else {
+                    const result = await window.plcAPI.readHoldingRegisters(variable.address, 1);
+                    if (result.success) {
+                        value = result.data[0] !== 0;
+                    }
+                }
+                
+                const varId = variable.bit !== undefined ? `${variable.address}_${variable.bit}` : variable.address;
+                const indicator = document.getElementById(`io_${varId}`);
+                const valueSpan = document.getElementById(`value_${varId}`);
+                
+                if (indicator && valueSpan) {
+                    if (value) {
+                        indicator.style.borderLeftColor = '#4CAF50';
+                        indicator.style.background = '#e8f5e9';
+                        valueSpan.textContent = '🟢';
+                    } else {
+                        indicator.style.borderLeftColor = '#ccc';
+                        indicator.style.background = '#f5f5f5';
+                        valueSpan.textContent = '⚪';
                     }
                 }
             } catch (error) {

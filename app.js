@@ -227,22 +227,26 @@ class SM3000App {
     }
 
     renderParameterRows(parameters) {
-        return parameters.map(param => `
+        return parameters.map(param => {
+            const bit = param.bit !== undefined ? param.bit : 0;
+            const paramId = `param_${param.address}_${bit}`;
+            return `
             <div class="parameter-row">
-                <div class="parameter-name">${param.name}</div>
+                <div class="parameter-name">${param.name}${param.bit !== undefined ? ` (MW${param.address}.${param.bit})` : ''}</div>
                 <input 
                     type="${param.type === 'BOOL' ? 'checkbox' : 'number'}" 
                     class="parameter-value" 
-                    id="param_${param.address}"
+                    id="${paramId}"
                     ${param.type === 'BOOL' ? '' : 'value="0"'}
                     ${!this.connected ? 'disabled' : ''}
                 />
                 <div style="display: flex; gap: 5px;">
-                    <button class="btn-read" onclick="app.readParameter(${param.address}, '${param.type}')" ${!this.connected ? 'disabled' : ''}>Read</button>
-                    <button class="btn-write" onclick="app.writeParameter(${param.address}, '${param.type}')" ${!this.connected ? 'disabled' : ''}>Write</button>
+                    <button class="btn-read" onclick="app.readParameter(${param.address}, '${param.type}', ${param.bit})" ${!this.connected ? 'disabled' : ''}>Read</button>
+                    <button class="btn-write" onclick="app.writeParameter(${param.address}, '${param.type}', ${param.bit})" ${!this.connected ? 'disabled' : ''}>Write</button>
                 </div>
             </div>
-        `).join('');
+        `;
+        }).join('');
     }
 
     async toggleConnection() {
@@ -291,25 +295,24 @@ class SM3000App {
         }
     }
 
-    async readParameter(address, type) {
+    async readParameter(address, type, bit) {
         if (!this.connected) {
             this.showMessage('Not connected to PLC', 'error');
             return;
         }
 
-        const inputElement = document.getElementById(`param_${address}`);
+        const inputElement = document.getElementById(`param_${address}_${bit || 0}`);
         
-        console.log(`Reading ${type} from address ${address}`);
+        console.log(`Reading ${type} from address ${address}${bit !== undefined ? '.' + bit : ''}`);
         
         try {
-            if (type === 'BOOL') {
-                console.log('Calling readHoldingRegisters for BOOL...');
-                const result = await window.plcAPI.readHoldingRegisters(address, 1);
-                console.log('Read BOOL result:', result);
+            if (type === 'BOOL' && bit !== undefined) {
+                console.log(`Calling readBoolBit for MW${address}.${bit}...`);
+                const result = await window.plcAPI.readBoolBit(address, bit);
+                console.log('Read BOOL bit result:', result);
                 if (result.success) {
-                    const value = result.data[0] !== 0;
-                    inputElement.checked = value;
-                    this.showMessage(`✓ Read value: ${value}`, 'success');
+                    inputElement.checked = result.data;
+                    this.showMessage(`✓ Read MW${address}.${bit}: ${result.data}`, 'success');
                 } else {
                     this.showMessage(`✗ ${result.message}`, 'error');
                 }
@@ -342,20 +345,20 @@ class SM3000App {
         }
     }
 
-    async writeParameter(address, type) {
+    async writeParameter(address, type, bit) {
         if (!this.connected) {
             this.showMessage('Not connected to PLC', 'error');
             return;
         }
 
-        const inputElement = document.getElementById(`param_${address}`);
+        const inputElement = document.getElementById(`param_${address}_${bit || 0}`);
         
         try {
-            if (type === 'BOOL') {
-                const value = inputElement.checked ? 1 : 0;
-                const result = await window.plcAPI.writeHoldingRegister(address, value);
+            if (type === 'BOOL' && bit !== undefined) {
+                const value = inputElement.checked;
+                const result = await window.plcAPI.writeBoolBit(address, bit, value);
                 if (result.success) {
-                    this.showMessage(result.message, 'success');
+                    this.showMessage(`✓ Written MW${address}.${bit}: ${value}`, 'success');
                 } else {
                     this.showMessage(result.message, 'error');
                 }

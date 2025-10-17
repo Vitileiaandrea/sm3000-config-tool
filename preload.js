@@ -23,5 +23,11 @@ contextBridge.exposeInMainWorld('plcAPI', {
     ipcRenderer.invoke('write-coil', { address, value }),
   
   getConnectionStatus: () => 
-    ipcRenderer.invoke('get-connection-status')
+    ipcRenderer.invoke('get-connection-status'),
+  
+  readBoolBit: (address, bit) => 
+    ipcRenderer.invoke('read-bool-bit', { address, bit }),
+  
+  writeBoolBit: (address, bit, value) => 
+    ipcRenderer.invoke('write-bool-bit', { address, bit, value })
 });
