@@ -72,24 +72,21 @@ if (!window.manualControlAdded) {
             window.manualControls[group].forEach(control => {
                 const id = `manual_${control.address}`;
                 html += `
-                    <div style="
-                        padding: 15px;
-                        background: #f8f9fa;
-                        border-radius: 8px;
-                        border: 2px solid #dee2e6;
-                        text-align: center;
-                    ">
-                        <div style="font-size: 32px; margin-bottom: 10px;">${control.icon}</div>
-                        <div style="font-weight: 600; margin-bottom: 10px; font-size: 14px;">${control.name}</div>
-                        <label style="display: flex; align-items: center; justify-content: center; gap: 10px; cursor: pointer;">
+                    <div class="control-card" id="${id}_card">
+                        <span class="control-icon">${control.icon}</span>
+                        <div class="control-name">${control.name}</div>
+                        <div style="font-size: 12px; color: #666; margin-bottom: 15px;">${control.desc}</div>
+                        <label class="toggle-switch">
                             <input 
                                 type="checkbox" 
                                 id="${id}"
                                 onchange="app.toggleManualOutput(${control.address}, this.checked)"
-                                style="width: 20px; height: 20px; cursor: pointer;"
                             />
-                            <span id="${id}_label" style="font-weight: 500;">OFF</span>
+                            <span class="toggle-slider"></span>
                         </label>
+                        <div style="margin-top: 10px;">
+                            <span id="${id}_label" style="font-weight: 600; font-size: 14px; color: #666;">OFF</span>
+                        </div>
                     </div>
                 `;
             });
@@ -103,7 +100,7 @@ if (!window.manualControlAdded) {
         html += `
             <div class="parameter-group">
                 <h2>🔄 Aggiornamento Stato</h2>
-                <button onclick="app.refreshManualControlStatus()" style="width: 100%; padding: 15px; font-size: 16px;">
+                <button onclick="app.refreshManualControlStatus()" class="btn-manual" style="width: 100%;">
                     ↻ Aggiorna Stato Uscite
                 </button>
             </div>
@@ -128,9 +125,17 @@ if (!window.manualControlAdded) {
             
             if (result.success) {
                 const label = document.getElementById(`manual_${address}_label`);
+                const card = document.getElementById(`manual_${address}_card`);
                 if (label) {
                     label.textContent = value ? 'ON' : 'OFF';
                     label.style.color = value ? '#4CAF50' : '#666';
+                }
+                if (card) {
+                    if (value) {
+                        card.classList.add('active');
+                    } else {
+                        card.classList.remove('active');
+                    }
                 }
                 this.showMessage(`✓ Uscita ${address}: ${value ? 'ON' : 'OFF'}`, 'success');
             } else {
@@ -161,11 +166,19 @@ if (!window.manualControlAdded) {
                         const value = result.data[0];
                         const checkbox = document.getElementById(`manual_${control.address}`);
                         const label = document.getElementById(`manual_${control.address}_label`);
+                        const card = document.getElementById(`manual_${control.address}_card`);
                         
                         if (checkbox) checkbox.checked = value;
                         if (label) {
                             label.textContent = value ? 'ON' : 'OFF';
                             label.style.color = value ? '#4CAF50' : '#666';
+                        }
+                        if (card) {
+                            if (value) {
+                                card.classList.add('active');
+                            } else {
+                                card.classList.remove('active');
+                            }
                         }
                     }
                 } catch (error) {
