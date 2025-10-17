@@ -135,9 +135,9 @@ if (!window.dashboardAdded) {
         
         for (const variable of this.dashboardVars) {
             try {
-                const result = await window.plcAPI.readCoils(variable.address, 1);
+                const result = await window.plcAPI.readHoldingRegisters(variable.address, 1);
                 if (result.success) {
-                    const value = result.data[0];
+                    const value = result.data[0] !== 0;
                     const indicator = document.getElementById(`io_${variable.address}`);
                     const valueSpan = document.getElementById(`value_${variable.address}`);
                     

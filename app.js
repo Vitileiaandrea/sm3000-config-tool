@@ -303,12 +303,13 @@ class SM3000App {
         
         try {
             if (type === 'BOOL') {
-                console.log('Calling readCoils...');
-                const result = await window.plcAPI.readCoils(address, 1);
-                console.log('Read coils result:', result);
+                console.log('Calling readHoldingRegisters for BOOL...');
+                const result = await window.plcAPI.readHoldingRegisters(address, 1);
+                console.log('Read BOOL result:', result);
                 if (result.success) {
-                    inputElement.checked = result.data[0];
-                    this.showMessage(`✓ Read value: ${result.data[0]}`, 'success');
+                    const value = result.data[0] !== 0;
+                    inputElement.checked = value;
+                    this.showMessage(`✓ Read value: ${value}`, 'success');
                 } else {
                     this.showMessage(`✗ ${result.message}`, 'error');
                 }
@@ -351,8 +352,8 @@ class SM3000App {
         
         try {
             if (type === 'BOOL') {
-                const value = inputElement.checked;
-                const result = await window.plcAPI.writeCoil(address, value);
+                const value = inputElement.checked ? 1 : 0;
+                const result = await window.plcAPI.writeHoldingRegister(address, value);
                 if (result.success) {
                     this.showMessage(result.message, 'success');
                 } else {
