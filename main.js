@@ -191,3 +191,58 @@ ipcMain.handle('write-coil', async (event, { address, value }) => {
 ipcMain.handle('get-connection-status', async () => {
   return { connected: isConnected };
 });
+
+ipcMain.handle('read-bool-bit', async (event, { address, bit }) => {
+  try {
+    let modbusAddress = address;
+    if (address >= 40001 && address <= 49999) {
+      modbusAddress = address - 40001;
+    }
+    
+    console.log(`[Main] Reading BOOL: MW${address}.${bit} (Modbus: ${modbusAddress})`);
+    if (!isConnected || !modbusClient) {
+      throw new Error('Not connected to PLC');
+    }
+    
+    const data = await modbusClient.readHoldingRegisters(modbusAddress, 1);
+    const word = data.data[0];
+    const bitValue = (word >> bit) & 1;
+    
+    console.log(`[Main] Read MW${address}=${word}, bit ${bit}=${bitValue}`);
+    return { success: true, data: bitValue === 1 };
+  } catch (error) {
+    console.error(`[Main] Read failed:`, error.message);
+    return { success: false, message: `Read failed: ${error.message}` };
+  }
+});
+
+ipcMain.handle('write-bool-bit', async (event, { address, bit, value }) => {
+  try {
+    let modbusAddress = address;
+    if (address >= 40001 && address <= 49999) {
+      modbusAddress = address - 40001;
+    }
+    
+    console.log(`[Main] Writing BOOL: MW${address}.${bit}=${value} (Modbus: ${modbusAddress})`);
+    if (!isConnected || !modbusClient) {
+      throw new Error('Not connected to PLC');
+    }
+    
+    const data = await modbusClient.readHoldingRegisters(modbusAddress, 1);
+    let word = data.data[0];
+    
+    if (value) {
+      word = word | (1 << bit);  // Set bit
+    } else {
+      word = word & ~(1 << bit); // Clear bit
+    }
+    
+    await modbusClient.writeRegister(modbusAddress, word);
+    
+    console.log(`[Main] Write successful: MW${address}=${word}`);
+    return { success: true, message: 'Bit written successfully' };
+  } catch (error) {
+    console.error(`[Main] Write failed:`, error.message);
+    return { success: false, message: `Write failed: ${error.message}` };
+  }
+});
