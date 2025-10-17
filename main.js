@@ -81,16 +81,12 @@ ipcMain.handle('disconnect-plc', async () => {
 
 ipcMain.handle('read-holding-registers', async (event, { address, length }) => {
   try {
-    let modbusAddress = address;
-    if (address >= 40001 && address <= 49999) {
-      modbusAddress = address - 40001;
-    }
-    console.log(`[Main] Reading holding registers: address=${address} (Modbus: ${modbusAddress}), length=${length}`);
+    console.log(`[Main] Reading holding registers: address=${address}, length=${length}`);
     if (!isConnected || !modbusClient) {
       throw new Error('Not connected to PLC');
     }
     
-    const data = await modbusClient.readHoldingRegisters(modbusAddress, length);
+    const data = await modbusClient.readHoldingRegisters(address, length);
     console.log(`[Main] Read successful, data:`, data.data);
     return { success: true, data: data.data };
   } catch (error) {
@@ -101,18 +97,16 @@ ipcMain.handle('read-holding-registers', async (event, { address, length }) => {
 
 ipcMain.handle('write-holding-register', async (event, { address, value }) => {
   try {
-    let modbusAddress = address;
-    if (address >= 40001 && address <= 49999) {
-      modbusAddress = address - 40001;
-    }
-    console.log(`[Main] Writing holding register: address=${address} (Modbus: ${modbusAddress}), value=${value}`);
+    console.log(`[Main] Writing holding register: address=${address}, value=${value}`);
     if (!isConnected || !modbusClient) {
       throw new Error('Not connected to PLC');
     }
     
-    await modbusClient.writeRegister(modbusAddress, value);
+    await modbusClient.writeRegister(address, value);
+    console.log(`[Main] Write successful`);
     return { success: true, message: 'Value written successfully' };
   } catch (error) {
+    console.error(`[Main] Write failed:`, error.message);
     return { success: false, message: `Write failed: ${error.message}` };
   }
 });
@@ -196,21 +190,16 @@ ipcMain.handle('get-connection-status', async () => {
 
 ipcMain.handle('read-bool-bit', async (event, { address, bit }) => {
   try {
-    let modbusAddress = address;
-    if (address >= 40001 && address <= 49999) {
-      modbusAddress = address - 40001;
-    }
-    
-    console.log(`[Main] Reading BOOL: MW${address}.${bit} (Modbus: ${modbusAddress})`);
+    console.log(`[Main] Reading BOOL: MW${address}.${bit} (Modbus Register: ${address})`);
     if (!isConnected || !modbusClient) {
       throw new Error('Not connected to PLC');
     }
     
-    const data = await modbusClient.readHoldingRegisters(modbusAddress, 1);
+    const data = await modbusClient.readHoldingRegisters(address, 1);
     const word = data.data[0];
     const bitValue = (word >> bit) & 1;
     
-    console.log(`[Main] Read MW${address}=${word}, bit ${bit}=${bitValue}`);
+    console.log(`[Main] Read MW${address}=${word} (0x${word.toString(16)}), bit ${bit}=${bitValue}`);
     return { success: true, data: bitValue === 1 };
   } catch (error) {
     console.error(`[Main] Read failed:`, error.message);
@@ -220,26 +209,23 @@ ipcMain.handle('read-bool-bit', async (event, { address, bit }) => {
 
 ipcMain.handle('write-bool-bit', async (event, { address, bit, value }) => {
   try {
-    let modbusAddress = address;
-    if (address >= 40001 && address <= 49999) {
-      modbusAddress = address - 40001;
-    }
-    
-    console.log(`[Main] Writing BOOL: MW${address}.${bit}=${value} (Modbus: ${modbusAddress})`);
+    console.log(`[Main] Writing BOOL: MW${address}.${bit}=${value} (Modbus Register: ${address})`);
     if (!isConnected || !modbusClient) {
       throw new Error('Not connected to PLC');
     }
     
-    const data = await modbusClient.readHoldingRegisters(modbusAddress, 1);
+    const data = await modbusClient.readHoldingRegisters(address, 1);
     let word = data.data[0];
+    console.log(`[Main] Current word value: ${word} (0x${word.toString(16)})`);
     
     if (value) {
-      word = word | (1 << bit);  // Set bit
+      word = word | (1 << bit);
     } else {
-      word = word & ~(1 << bit); // Clear bit
+      word = word & ~(1 << bit);
     }
     
-    await modbusClient.writeRegister(modbusAddress, word);
+    console.log(`[Main] New word value: ${word} (0x${word.toString(16)})`);
+    await modbusClient.writeRegister(address, word);
     
     console.log(`[Main] Write successful: MW${address}=${word}`);
     return { success: true, message: 'Bit written successfully' };
