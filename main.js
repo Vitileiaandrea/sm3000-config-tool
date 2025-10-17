@@ -21,6 +21,8 @@ function createWindow() {
 
   mainWindow.loadFile('index.html');
   
+  mainWindow.webContents.openDevTools();
+  
   mainWindow.on('closed', () => {
     if (modbusClient && isConnected) {
       modbusClient.close(() => {});
