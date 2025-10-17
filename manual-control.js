@@ -4,30 +4,24 @@
 if (!window.manualControlAdded) {
     window.manualControlAdded = true;
     
-    // Define manual control outputs
+    // Define manual control outputs (using %Q addresses from Unity Pro)
     window.manualControls = {
         "Pistoni": [
-            { name: "Spintore Avanti", address: 400, icon: "➡️" },
-            { name: "Spintore Indietro", address: 401, icon: "⬅️" },
-            { name: "Lame Su", address: 410, icon: "⬆️" },
-            { name: "Lame Giù", address: 411, icon: "⬇️" },
-            { name: "Caricatore Su", address: 420, icon: "⬆️" },
-            { name: "Caricatore Giù", address: 421, icon: "⬇️" },
-            { name: "Aghi Avanti", address: 430, icon: "➡️" },
-            { name: "Aghi Indietro", address: 431, icon: "⬅️" },
-            { name: "Morsa Aperta", address: 440, icon: "🔓" },
-            { name: "Morsa Chiusa", address: 441, icon: "🔒" }
+            { name: "Spintore Avanti", address: 16, icon: "➡️", desc: "%Q0.2.16 - q_CmdAvantiSpint" },
+            { name: "Lame Su", address: 7, icon: "⬆️", desc: "%Q0.2.7 - q_SalLame" },
+            { name: "Lame Giù", address: 8, icon: "⬇️", desc: "%Q0.2.8 - q_DiscLame" },
+            { name: "Caricatore Su", address: 10, icon: "⬆️", desc: "%Q0.2.10 - q_CmdSalCarCeppi" },
+            { name: "Caricatore Giù", address: 9, icon: "⬇️", desc: "%Q0.2.9 - q_CmdDisCarCeppi" },
+            { name: "Aghi Avanti", address: 15, icon: "➡️", desc: "%Q0.2.15 - q_CmdAvantiAghi" },
+            { name: "Cubo Taglio Su", address: 14, icon: "⬆️", desc: "%Q0.2.14 - q_SalitaCuboTaglio" },
+            { name: "Cubo Taglio Giù", address: 13, icon: "⬇️", desc: "%Q0.2.13 - q_DiscesaCuboTaglio" }
+        ],
+        "Cubo Ceppi": [
+            { name: "Apre Cubo", address: 11, icon: "🔓", desc: "%Q0.2.11 - q_ApreCuboCeppi" },
+            { name: "Chiude Cubo", address: 12, icon: "🔒", desc: "%Q0.2.12 - q_ChiudeCuboCeppi" }
         ],
         "Valvole": [
-            { name: "Abilitazione Valvole", address: 450, icon: "🔧" },
-            { name: "Elettrovalvola Aria", address: 451, icon: "💨" }
-        ],
-        "Luci Spia": [
-            { name: "Spia Start Ceppi", address: 500, icon: "💡" },
-            { name: "Spia Start Taglio", address: 501, icon: "💡" },
-            { name: "Spia Pausa", address: 502, icon: "💡" },
-            { name: "Spia Marcia", address: 503, icon: "💡" },
-            { name: "Spia Reset", address: 504, icon: "💡" }
+            { name: "Elettrovalvola Aria", address: 5, icon: "💨", desc: "%Q0.2.5 - q_EVAria" }
         ]
     };
     

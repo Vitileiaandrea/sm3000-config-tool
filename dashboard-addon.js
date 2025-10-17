@@ -47,6 +47,12 @@ if (!window.dashboardAdded) {
         // Load all BOOL variables for I/O monitoring
         await this.loadDashboardVariables();
         this.renderDashboardGrid();
+        
+        setTimeout(() => {
+            if (!this.dashboardInterval) {
+                this.toggleDashboardRefresh();
+            }
+        }, 500);
     };
     
     // Load variables for dashboard

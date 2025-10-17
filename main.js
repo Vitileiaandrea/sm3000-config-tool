@@ -131,24 +131,36 @@ ipcMain.handle('write-holding-registers', async (event, { address, values }) => 
 ipcMain.handle('read-coils', async (event, { address, length }) => {
   try {
     let modbusAddress = address;
+    let useCoils = false;
+    
     if (address >= 40001 && address <= 49999) {
       modbusAddress = address - 40001;
     } else if (address >= 10001 && address <= 19999) {
       modbusAddress = address - 10001;
-    } else if (address >= 1 && address <= 9999 && address < 10000) {
+      useCoils = true;
+    } else if (address >= 0 && address <= 999) {
       modbusAddress = address;
+      useCoils = true;
     }
-    console.log(`[Main] Reading BOOL as Holding Register: address=${address} (Modbus: ${modbusAddress}), length=${length}`);
+    
+    console.log(`[Main] Reading ${useCoils ? 'Coils' : 'Holding Registers'}: address=${address} (Modbus: ${modbusAddress}), length=${length}`);
     if (!isConnected || !modbusClient) {
       throw new Error('Not connected to PLC');
     }
     
-    const data = await modbusClient.readHoldingRegisters(modbusAddress, length);
-    const boolData = data.data.map(val => val !== 0);
+    let boolData;
+    if (useCoils) {
+      const data = await modbusClient.readCoils(modbusAddress, length);
+      boolData = data.data;
+    } else {
+      const data = await modbusClient.readHoldingRegisters(modbusAddress, length);
+      boolData = data.data.map(val => val !== 0);
+    }
+    
     console.log(`[Main] Read BOOL values:`, boolData);
     return { success: true, data: boolData };
   } catch (error) {
-    console.error(`[Main] Read BOOL failed:`, error.message);
+    console.error(`[Main] Read failed:`, error.message);
     return { success: false, message: `Read failed: ${error.message}` };
   }
 });
@@ -156,24 +168,34 @@ ipcMain.handle('read-coils', async (event, { address, length }) => {
 ipcMain.handle('write-coil', async (event, { address, value }) => {
   try {
     let modbusAddress = address;
+    let useCoils = false;
+    
     if (address >= 40001 && address <= 49999) {
       modbusAddress = address - 40001;
     } else if (address >= 10001 && address <= 19999) {
       modbusAddress = address - 10001;
-    } else if (address >= 1 && address <= 9999 && address < 10000) {
+      useCoils = true;
+    } else if (address >= 0 && address <= 999) {
       modbusAddress = address;
+      useCoils = true;
     }
-    const intValue = value ? 1 : 0;
-    console.log(`[Main] Writing BOOL as Holding Register: address=${address} (Modbus: ${modbusAddress}), value=${value} (${intValue})`);
+    
+    console.log(`[Main] Writing ${useCoils ? 'Coil' : 'Holding Register'}: address=${address} (Modbus: ${modbusAddress}), value=${value}`);
     if (!isConnected || !modbusClient) {
       throw new Error('Not connected to PLC');
     }
     
-    await modbusClient.writeRegister(modbusAddress, intValue);
-    console.log(`[Main] BOOL written successfully`);
+    if (useCoils) {
+      await modbusClient.writeCoil(modbusAddress, value);
+    } else {
+      const intValue = value ? 1 : 0;
+      await modbusClient.writeRegister(modbusAddress, intValue);
+    }
+    
+    console.log(`[Main] Write successful`);
     return { success: true, message: 'Value written successfully' };
   } catch (error) {
-    console.error(`[Main] Write BOOL failed:`, error.message);
+    console.error(`[Main] Write failed:`, error.message);
     return { success: false, message: `Write failed: ${error.message}` };
   }
 });

@@ -3,7 +3,7 @@
     "Machine Status": [
       {
         "name": "ALLARME_ATTIVO",
-        "address": 0,
+        "address": 105,
         "type": "BOOL",
         "icon": "\u26a0\ufe0f",
         "label": "Allarme Attivo"
@@ -40,14 +40,14 @@
       },
       {
         "name": "ORE_LAVORO_REALI",
-        "address": 100,
+        "address": 260,
         "type": "INT",
         "icon": "\u23f1\ufe0f",
         "label": "Ore Lavoro"
       },
       {
         "name": "ORE_MACCHINA_ACCESA",
-        "address": 101,
+        "address": 310,
         "type": "INT",
         "icon": "\ud83d\udd0c",
         "label": "Ore Macchina"
@@ -58,7 +58,7 @@
     "Active Alarms": [
       {
         "name": "ALLARME_ATTIVO",
-        "address": 0,
+        "address": 105,
         "type": "BOOL"
       },
       {
@@ -68,7 +68,7 @@
       },
       {
         "name": "ALLARME_ATTIVO_2",
-        "address": 2,
+        "address": 105,
         "type": "BOOL"
       },
       {
@@ -299,7 +299,7 @@
     "Error History & Reset": [
       {
         "name": "RESET_STORICO_ALLARMI",
-        "address": 100,
+        "address": 173,
         "type": "BOOL"
       }
     ]
@@ -417,17 +417,17 @@
     "Length Parameters": [
       {
         "name": "LUNGHEZZA_HMI",
-        "address": 299,
+        "address": 190,
         "type": "INT"
       },
       {
         "name": "LUNGHEZZA_PRODOTTO_1",
-        "address": 300,
+        "address": 191,
         "type": "INT"
       },
       {
         "name": "LUNGHEZZA_PRODOTTO_2",
-        "address": 301,
+        "address": 192,
         "type": "INT"
       },
       {
@@ -454,12 +454,12 @@
     "Format Settings": [
       {
         "name": "FORMATO_X_VERSO_HMI",
-        "address": 309,
+        "address": 530,
         "type": "INT"
       },
       {
         "name": "FORMATO_Y_VERSO_HMI",
-        "address": 310,
+        "address": 532,
         "type": "INT"
       },
       {
@@ -515,7 +515,7 @@
       },
       {
         "name": "QUOTA_ASSE_CEPPI_RICHIESTA",
-        "address": 400,
+        "address": 4404,
         "type": "INT"
       },
       {
@@ -551,7 +551,7 @@
       },
       {
         "name": "TEMPO_SAL_DIS_CARICATORE",
-        "address": 501,
+        "address": 262,
         "type": "INT"
       }
     ]
@@ -653,12 +653,12 @@
       },
       {
         "name": "ORE_LAVORO_REALI",
-        "address": 100,
+        "address": 260,
         "type": "INT"
       },
       {
         "name": "ORE_MACCHINA_ACCESA",
-        "address": 101,
+        "address": 310,
         "type": "INT"
       }
     ],
@@ -728,42 +728,42 @@
     "Reset Counters": [
       {
         "name": "RESET_ORE_LAVORO_REALI",
-        "address": 300,
+        "address": 173,
         "type": "BOOL"
       },
       {
         "name": "RESET_ORE_MACCHINA_ACCESA",
-        "address": 301,
+        "address": 173,
         "type": "BOOL"
       },
       {
         "name": "RESET_CUBI_PRODOTTI_14",
-        "address": 310,
+        "address": 173,
         "type": "BOOL"
       },
       {
         "name": "RESET_CUBI_PRODOTTI_15",
-        "address": 311,
+        "address": 173,
         "type": "BOOL"
       },
       {
         "name": "RESET_CUBI_PRODOTTI_16",
-        "address": 312,
+        "address": 173,
         "type": "BOOL"
       },
       {
         "name": "RESET_CUBI_PRODOTTI_19",
-        "address": 313,
+        "address": 173,
         "type": "BOOL"
       },
       {
         "name": "RESET_CUBI_PRODOTTI_21",
-        "address": 314,
+        "address": 173,
         "type": "BOOL"
       },
       {
         "name": "RESET_CUBI_PRODOTTI_24",
-        "address": 315,
+        "address": 173,
         "type": "BOOL"
       }
     ],
@@ -916,39 +916,39 @@
     "Language": [
       {
         "name": "SCELTA_LINGUA",
-        "address": 809,
+        "address": 104,
         "type": "INT"
       },
       {
         "name": "ITALIANO",
-        "address": 600,
+        "address": 50,
         "type": "BOOL"
       },
       {
         "name": "INGLESE",
-        "address": 601,
+        "address": 50,
         "type": "BOOL"
       },
       {
         "name": "FRANCESE",
-        "address": 602,
+        "address": 50,
         "type": "BOOL"
       },
       {
         "name": "SPAGNOLO",
-        "address": 603,
+        "address": 50,
         "type": "BOOL"
       }
     ],
     "Machine Info": [
       {
         "name": "CLIENTE",
-        "address": 899,
+        "address": 300,
         "type": "INT"
       },
       {
         "name": "MATRICOLA",
-        "address": 900,
+        "address": 22,
         "type": "INT"
       },
       {
@@ -972,24 +972,24 @@
       },
       {
         "name": "GIORNI_RESIDUI_GARANZIA",
-        "address": 1001,
+        "address": 4318,
         "type": "INT"
       },
       {
         "name": "ORE_RESIDUE_GARANZIA",
-        "address": 1002,
+        "address": 4316,
         "type": "INT"
       }
     ],
     "Maintenance": [
       {
         "name": "GIORNI_MANUTENZIONE",
-        "address": 1009,
+        "address": 328,
         "type": "INT"
       },
       {
         "name": "ORE_MANUTENZIONE",
-        "address": 1010,
+        "address": 326,
         "type": "INT"
       }
     ]
