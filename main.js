@@ -131,32 +131,20 @@ ipcMain.handle('write-holding-registers', async (event, { address, values }) => 
 ipcMain.handle('read-coils', async (event, { address, length }) => {
   try {
     let modbusAddress = address;
-    let useCoils = false;
     
     if (address >= 40001 && address <= 49999) {
       modbusAddress = address - 40001;
     } else if (address >= 10001 && address <= 19999) {
       modbusAddress = address - 10001;
-      useCoils = true;
-    } else if (address >= 0 && address <= 999) {
-      modbusAddress = address;
-      useCoils = true;
     }
     
-    console.log(`[Main] Reading ${useCoils ? 'Coils' : 'Holding Registers'}: address=${address} (Modbus: ${modbusAddress}), length=${length}`);
+    console.log(`[Main] Reading BOOL as Holding Register: address=${address} (Modbus: ${modbusAddress}), length=${length}`);
     if (!isConnected || !modbusClient) {
       throw new Error('Not connected to PLC');
     }
     
-    let boolData;
-    if (useCoils) {
-      const data = await modbusClient.readCoils(modbusAddress, length);
-      boolData = data.data;
-    } else {
-      const data = await modbusClient.readHoldingRegisters(modbusAddress, length);
-      boolData = data.data.map(val => val !== 0);
-    }
-    
+    const data = await modbusClient.readHoldingRegisters(modbusAddress, length);
+    const boolData = data.data.map(val => val !== 0);
     console.log(`[Main] Read BOOL values:`, boolData);
     return { success: true, data: boolData };
   } catch (error) {
@@ -175,7 +163,7 @@ ipcMain.handle('write-coil', async (event, { address, value }) => {
     } else if (address >= 10001 && address <= 19999) {
       modbusAddress = address - 10001;
       useCoils = true;
-    } else if (address >= 0 && address <= 999) {
+    } else if (address >= 5 && address <= 20) {
       modbusAddress = address;
       useCoils = true;
     }
