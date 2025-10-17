@@ -41,14 +41,14 @@
       {
         "name": "ORE_LAVORO_REALI",
         "address": 260,
-        "type": "INT",
+        "type": "DINT",
         "icon": "\u23f1\ufe0f",
         "label": "Ore Lavoro"
       },
       {
         "name": "ORE_MACCHINA_ACCESA",
         "address": 310,
-        "type": "INT",
+        "type": "DINT",
         "icon": "\ud83d\udd0c",
         "label": "Ore Macchina"
       }
@@ -516,7 +516,7 @@
       {
         "name": "QUOTA_ASSE_CEPPI_RICHIESTA",
         "address": 4404,
-        "type": "INT"
+        "type": "DINT"
       },
       {
         "name": "OFFSET_ASSE_CEPPI",
@@ -654,12 +654,12 @@
       {
         "name": "ORE_LAVORO_REALI",
         "address": 260,
-        "type": "INT"
+        "type": "DINT"
       },
       {
         "name": "ORE_MACCHINA_ACCESA",
         "address": 310,
-        "type": "INT"
+        "type": "DINT"
       }
     ],
     "Counters 14-16mm": [
@@ -949,7 +949,7 @@
       {
         "name": "MATRICOLA",
         "address": 22,
-        "type": "INT"
+        "type": "DINT"
       },
       {
         "name": "VERSIONE_SW",
@@ -978,7 +978,7 @@
       {
         "name": "ORE_RESIDUE_GARANZIA",
         "address": 4316,
-        "type": "INT"
+        "type": "DINT"
       }
     ],
     "Maintenance": [
@@ -990,7 +990,7 @@
       {
         "name": "ORE_MANUTENZIONE",
         "address": 326,
-        "type": "INT"
+        "type": "DINT"
       }
     ]
   }

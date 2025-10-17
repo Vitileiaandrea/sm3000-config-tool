@@ -313,12 +313,24 @@ class SM3000App {
                     this.showMessage(`✗ ${result.message}`, 'error');
                 }
             } else {
-                console.log('Calling readHoldingRegisters...');
-                const result = await window.plcAPI.readHoldingRegisters(address, 1);
+                const length = (type === 'DINT' || type === 'UDINT' || type === 'REAL') ? 2 : 1;
+                console.log(`Calling readHoldingRegisters (${length} registers)...`);
+                const result = await window.plcAPI.readHoldingRegisters(address, length);
                 console.log('Read holding registers result:', result);
                 if (result.success) {
-                    inputElement.value = result.data[0];
-                    this.showMessage(`✓ Read value: ${result.data[0]}`, 'success');
+                    let value;
+                    if (length === 2) {
+                        const high = result.data[0];
+                        const low = result.data[1];
+                        value = (high << 16) | low;
+                        if (type === 'DINT' && value > 0x7FFFFFFF) {
+                            value = value - 0x100000000;
+                        }
+                    } else {
+                        value = result.data[0];
+                    }
+                    inputElement.value = value;
+                    this.showMessage(`✓ Read value: ${value}`, 'success');
                 } else {
                     this.showMessage(`✗ ${result.message}`, 'error');
                 }
